@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Builder | Personal Details</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/personal_details.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body data-page="create">
+
+<div class="container">
+
+    <!-- Sidebar loads dynamically here -->
+    <div id="sidebar"></div>
+
+    <main class="main-content">
+
+        <!-- Dynamic Header -->
+        <header class="saas-header animate-fade">
+            <div>
+                <h1>Resume Builder</h1>
+                <p>Create Your Professional Resume</p>
+            </div>
+
+            <div class="profile">
+                <i class="fa-solid fa-user"></i>
+                Welcome, <strong id="username">Guest</strong>
+            </div>
+        </header>
+
+        <!-- Progress Steps -->
+        <div class="steps animate-slide">
+            <div class="step active">
+                <span><i class="fa-solid fa-user"></i></span>
+                <p>Personal Details</p>
+            </div>
+            <div class="step">
+                <span><i class="fa-solid fa-graduation-cap"></i></span>
+                <p>Education</p>
+            </div>
+            <div class="step">
+                <span><i class="fa-solid fa-briefcase"></i></span>
+                <p>Experience</p>
+            </div>
+            <div class="step">
+                <span><i class="fa-solid fa-code"></i></span>
+                <p>Skills</p>
+            </div>
+            <div class="step">
+                <span><i class="fa-solid fa-folder-open"></i></span>
+                <p>Projects</p>
+            </div>
+            <div class="step">
+                <span><i class="fa-solid fa-certificate"></i></span>
+                <p>Certifications</p>
+            </div>
+            <div class="step">
+                <span><i class="fa-solid fa-eye"></i></span>
+                <p>Preview</p>
+            </div>
+        </div>
+
+        <!-- Personal Details Card -->
+        <div class="saas-card animate-slide">
+            
+            <div style="margin-bottom: 28px;">
+                <h2 style="font-size: 20px; font-weight: 700; display: flex; align-items: center; gap: 8px;">
+                    <i class="fa-solid fa-user-pen" style="color: var(--primary);"></i>
+                    Personal Information
+                </h2>
+                <p style="font-size: 14px; color: var(--text-light); margin-top: 4px;">Provide your contact and personal information for the resume header</p>
+            </div>
+
+            <form id="personalForm">
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+                        <label for="first_name">First Name <span>*</span></label>
+                        <input type="text" id="first_name" class="form-input" placeholder="e.g. John" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="last_name">Last Name</label>
+                        <input type="text" id="last_name" class="form-input" placeholder="e.g. Doe">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address <span>*</span></label>
+                        <input type="email" id="email" class="form-input" placeholder="e.g. johndoe@gmail.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="mobile">Mobile Number</label>
+                        <input type="text" id="mobile" class="form-input" placeholder="e.g. +91 98765 43210">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="date_of_birth">Date of Birth</label>
+                        <input type="date" id="date_of_birth" class="form-input">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="city">City</label>
+                        <input type="text" id="city" class="form-input" placeholder="e.g. Bangalore">
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="address">Full Address</label>
+                        <input type="text" id="address" class="form-input" placeholder="e.g. 123 Main St, Appt 4B">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="state">State</label>
+                        <input type="text" id="state" class="form-input" placeholder="e.g. Karnataka">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="country">Country</label>
+                        <input type="text" id="country" class="form-input" placeholder="e.g. India">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="pincode">Pincode</label>
+                        <input type="text" id="pincode" class="form-input" placeholder="e.g. 560001">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="linkedin_url">LinkedIn URL</label>
+                        <input type="url" id="linkedin_url" class="form-input" placeholder="e.g. https://linkedin.com/in/johndoe">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="github_url">GitHub URL</label>
+                        <input type="url" id="github_url" class="form-input" placeholder="e.g. https://github.com/johndoe">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="portfolio_url">Portfolio URL</label>
+                        <input type="url" id="portfolio_url" class="form-input" placeholder="e.g. https://johndoe.dev">
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="professional_summary">Professional Summary</label>
+                        <textarea
+                            id="professional_summary"
+                            class="form-textarea"
+                            rows="6"
+                            maxlength="1000"
+                            placeholder="Write a brief professional overview about yourself (achievements, core strengths, and skills)..."></textarea>
+                    </div>
+
+                </div>
+
+                <div class="buttons-row">
+                    
+                    <button
+                        type="button"
+                        class="btn btn-secondary btn-back"
+                        onclick="window.history.back()">
+                        <i class="fa-solid fa-arrow-left"></i>
+                        Previous
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary btn-next">
+                        Save & Next
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </main>
+
+</div>
+
+<script src="js/common.js"></script>
+<script src="js/personal_details.js"></script>
+<script>
+    // Set username in header
+    window.addEventListener('DOMContentLoaded', () => {
+        const fullName = localStorage.getItem("full_name");
+        const usernameEl = document.getElementById("username");
+        if (fullName && usernameEl) {
+            usernameEl.textContent = fullName;
+        }
+    });
+</script>
+</body>
+</html>

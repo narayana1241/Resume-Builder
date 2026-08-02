@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Builder | Editor Workspace</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/editor.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <!-- html2pdf dependency -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+
+<!-- Top Navigation Bar -->
+<header class="editor-navbar">
+    <div class="navbar-left">
+        <button id="btnBackToDashboard" class="btn btn-outline btn-sm">
+            <i class="fa-solid fa-arrow-left"></i> Dashboard
+        </button>
+        <span class="resume-badge" id="resumeTitleBadge">Untitled Resume</span>
+    </div>
+    
+    <div class="navbar-center">
+        <h2>Resume Editor Workspace</h2>
+    </div>
+
+    <div class="navbar-right">
+        <button id="btnDownloadPDF" class="btn btn-primary btn-sm">
+            <i class="fa-solid fa-download"></i> Download PDF
+        </button>
+    </div>
+</header>
+
+<!-- Split Screen Layout -->
+<div class="editor-split-container">
+    
+    <!-- Left Pane: Form Editor -->
+    <aside class="editor-pane">
+        
+        <!-- Step Wizard Header -->
+        <div class="wizard-steps-nav">
+            <div class="step-nav-item active" data-step="contacts">
+                <span class="step-nav-icon"><i class="fa-solid fa-user"></i></span>
+                <span class="step-nav-text">Contacts</span>
+            </div>
+            <div class="step-nav-item" data-step="education">
+                <span class="step-nav-icon"><i class="fa-solid fa-graduation-cap"></i></span>
+                <span class="step-nav-text">Education</span>
+            </div>
+            <div class="step-nav-item" data-step="experience">
+                <span class="step-nav-icon"><i class="fa-solid fa-briefcase"></i></span>
+                <span class="step-nav-text">Experience</span>
+            </div>
+            <div class="step-nav-item" data-step="skills">
+                <span class="step-nav-icon"><i class="fa-solid fa-code"></i></span>
+                <span class="step-nav-text">Skills</span>
+            </div>
+            <div class="step-nav-item" data-step="projects">
+                <span class="step-nav-icon"><i class="fa-solid fa-folder-open"></i></span>
+                <span class="step-nav-text">Projects</span>
+            </div>
+            <div class="step-nav-item" data-step="certifications">
+                <span class="step-nav-icon"><i class="fa-solid fa-certificate"></i></span>
+                <span class="step-nav-text">Certs</span>
+            </div>
+        </div>
+
+        <!-- Scrollable Form Area -->
+        <div class="form-scroll-area">
+            
+            <!-- STEP 1: Contacts Form -->
+            <div class="form-step-content" id="step-contacts">
+                <h3 class="step-title">Personal Details</h3>
+                <p class="step-subtitle">Add your up-to-date contact information so recruiters can reach you.</p>
+                <form id="contactsForm">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="first_name">First Name <span>*</span></label>
+                            <input type="text" id="first_name" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="last_name">Last Name</label>
+                            <input type="text" id="last_name" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email <span>*</span></label>
+                            <input type="email" id="email" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="mobile">Phone <span>*</span></label>
+                            <input type="text" id="mobile" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="date_of_birth">Date of Birth</label>
+                            <input type="date" id="date_of_birth" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label for="pincode">Pincode</label>
+                            <input type="text" id="pincode" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label for="city">City</label>
+                            <input type="text" id="city" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label for="state">State</label>
+                            <input type="text" id="state" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label for="country">Country</label>
+                            <input type="text" id="country" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label for="linkedin_url">LinkedIn URL</label>
+                            <input type="url" id="linkedin_url" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label for="github_url">GitHub URL</label>
+                            <input type="url" id="github_url" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label for="portfolio_url">Portfolio URL</label>
+                            <input type="url" id="portfolio_url" class="form-input">
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="address">Address</label>
+                            <input type="text" id="address" class="form-input">
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="professional_summary">Professional Summary</label>
+                            <textarea id="professional_summary" class="form-textarea" rows="4"></textarea>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- STEP 2: Education Form -->
+            <div class="form-step-content" id="step-education" style="display:none;">
+                <h3 class="step-title">Education</h3>
+                <p class="step-subtitle">Add details about your degrees, colleges, and academic timeline.</p>
+                <form id="educationForm">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="degree">Degree <span>*</span></label>
+                            <input type="text" id="degree" class="form-input" placeholder="e.g. B.Tech" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="institution">Institution Name <span>*</span></label>
+                            <input type="text" id="institution" class="form-input" placeholder="e.g. Vignan University" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="university">University Board</label>
+                            <input type="text" id="university" class="form-input" placeholder="e.g. JNTU">
+                        </div>
+                        <div class="form-group">
+                            <label for="field_of_study">Field of Study</label>
+                            <input type="text" id="field_of_study" class="form-input" placeholder="e.g. Information Technology">
+                        </div>
+                        <div class="form-group">
+                            <label for="start_year">Start Year</label>
+                            <input type="number" id="start_year" class="form-input" placeholder="e.g. 2020">
+                        </div>
+                        <div class="form-group">
+                            <label for="end_year">End Year</label>
+                            <input type="number" id="end_year" class="form-input" placeholder="e.g. 2024">
+                        </div>
+                        <div class="form-group">
+                            <label for="cgpa_percentage">CGPA or Percentage</label>
+                            <input type="text" id="cgpa_percentage" class="form-input" placeholder="e.g. 8.5 or 85%">
+                        </div>
+                        <div class="form-group checkbox" style="margin-top: 28px;">
+                            <label>
+                                <input type="checkbox" id="currently_studying"> Currently Studying
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-action-row">
+                        <button type="button" id="btnAddEducation" class="btn btn-secondary btn-sm">
+                            <i class="fa-solid fa-plus"></i> Add Education
+                        </button>
+                    </div>
+                </form>
+
+                <div class="list-section">
+                    <h4>Added Education</h4>
+                    <div class="saas-table-container">
+                        <table class="saas-table">
+                            <thead>
+                                <tr>
+                                    <th>Degree</th>
+                                    <th>Institution</th>
+                                    <th>Timeline</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="educationListBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- STEP 3: Experience Form -->
+            <div class="form-step-content" id="step-experience" style="display:none;">
+                <h3 class="step-title">Experience</h3>
+                <p class="step-subtitle">Add your work history, internship details, and roles.</p>
+                <form id="experienceForm">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="company_name">Company Name <span>*</span></label>
+                            <input type="text" id="company_name" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="job_title">Job Title</label>
+                            <input type="text" id="job_title" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label for="employment_type">Employment Type <span>*</span></label>
+                            <input type="text" id="employment_type" class="form-input" placeholder="e.g. Full-time, Internship" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="location">Location</label>
+                            <input type="text" id="location" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label for="start_date">Start Date</label>
+                            <input type="date" id="start_date" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label for="end_date">End Date</label>
+                            <input type="date" id="end_date" class="form-input">
+                        </div>
+                        <div class="form-group checkbox" style="margin-top: 28px; grid-column: span 2;">
+                            <label>
+                                <input type="checkbox" id="currently_working"> Currently Working Here
+                            </label>
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="job_description">Job Description</label>
+                            <textarea id="job_description" class="form-textarea" rows="4"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-action-row">
+                        <button type="button" id="btnAddExperience" class="btn btn-secondary btn-sm">
+                            <i class="fa-solid fa-plus"></i> Add Experience
+                        </button>
+                    </div>
+                </form>
+
+                <div class="list-section">
+                    <h4>Added Experience</h4>
+                    <div class="saas-table-container">
+                        <table class="saas-table">
+                            <thead>
+                                <tr>
+                                    <th>Role</th>
+                                    <th>Company</th>
+                                    <th>Timeline</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="experienceListBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- STEP 4: Skills Form -->
+            <div class="form-step-content" id="step-skills" style="display:none;">
+                <h3 class="step-title">Skills</h3>
+                <p class="step-subtitle">Add your core technical strengths, language proficiencies, and tools.</p>
+                <form id="skillsForm">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="skill_name">Skill Name <span>*</span></label>
+                            <input type="text" id="skill_name" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="skill_category">Category</label>
+                            <select id="skill_category" class="form-select">
+                                <option value="">Select Category</option>
+                                <option>Programming Language</option>
+                                <option>Database</option>
+                                <option>Frontend</option>
+                                <option>Backend</option>
+                                <option>UI/UX Design</option>
+                                <option>Soft Skill</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="skill_level">Level</label>
+                            <select id="skill_level" class="form-select">
+                                <option>Beginner</option>
+                                <option>Intermediate</option>
+                                <option>Advanced</option>
+                                <option>Expert</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="experience_years">Experience (Years)</label>
+                            <input type="number" id="experience_years" class="form-input" step="0.5">
+                        </div>
+                    </div>
+                    <div class="form-action-row">
+                        <button type="button" id="btnAddSkill" class="btn btn-secondary btn-sm">
+                            <i class="fa-solid fa-plus"></i> Add Skill
+                        </button>
+                    </div>
+                </form>
+
+                <div class="list-section">
+                    <h4>Added Skills</h4>
+                    <div class="saas-table-container">
+                        <table class="saas-table">
+                            <thead>
+                                <tr>
+                                    <th>Skill</th>
+                                    <th>Category</th>
+                                    <th>Level</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="skillsListBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- STEP 5: Projects Form -->
+            <div class="form-step-content" id="step-projects" style="display:none;">
+                <h3 class="step-title">Projects</h3>
+                <p class="step-subtitle">Add details of key projects you have engineered.</p>
+                <form id="projectsForm">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="project_name">Project Name <span>*</span></label>
+                            <input type="text" id="project_name" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="role">Your Role</label>
+                            <input type="text" id="role" class="form-input">
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="technologies_used">Technologies Used</label>
+                            <input type="text" id="technologies_used" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label for="proj_start_date">Start Date</label>
+                            <input type="date" id="proj_start_date" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label for="proj_end_date">End Date</label>
+                            <input type="date" id="proj_end_date" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label for="proj_github_url">GitHub URL</label>
+                            <input type="url" id="proj_github_url" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label for="live_project_url">Live Demo URL</label>
+                            <input type="url" id="live_project_url" class="form-input">
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="project_description">Project Description</label>
+                            <textarea id="project_description" class="form-textarea" rows="4"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-action-row">
+                        <button type="button" id="btnAddProject" class="btn btn-secondary btn-sm">
+                            <i class="fa-solid fa-plus"></i> Add Project
+                        </button>
+                    </div>
+                </form>
+
+                <div class="list-section">
+                    <h4>Added Projects</h4>
+                    <div class="saas-table-container">
+                        <table class="saas-table">
+                            <thead>
+                                <tr>
+                                    <th>Project</th>
+                                    <th>Role</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="projectsListBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- STEP 6: Certifications Form -->
+            <div class="form-step-content" id="step-certifications" style="display:none;">
+                <h3 class="step-title">Certifications</h3>
+                <p class="step-subtitle">Add your credentials and professional certifications.</p>
+                <form id="certificationsForm">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="certification_name">Certification Name <span>*</span></label>
+                            <input type="text" id="certification_name" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="issuing_organization">Issuing Organization <span>*</span></label>
+                            <input type="text" id="issuing_organization" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="issue_date">Issue Date</label>
+                            <input type="date" id="issue_date" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label for="expiry_date">Expiry Date</label>
+                            <input type="date" id="expiry_date" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label for="credential_id">Credential ID</label>
+                            <input type="text" id="credential_id" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label for="credential_url">Credential URL</label>
+                            <input type="url" id="credential_url" class="form-input">
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="cert_description">Description</label>
+                            <textarea id="cert_description" class="form-textarea" rows="4"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-action-row">
+                        <button type="button" id="btnAddCertification" class="btn btn-secondary btn-sm">
+                            <i class="fa-solid fa-plus"></i> Add Certification
+                        </button>
+                    </div>
+                </form>
+
+                <div class="list-section">
+                    <h4>Added Certifications</h4>
+                    <div class="saas-table-container">
+                        <table class="saas-table">
+                            <thead>
+                                <tr>
+                                    <th>Credential</th>
+                                    <th>Issuer</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="certificationsListBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Wizard Navigation Row -->
+        <footer class="wizard-footer">
+            <button id="btnPrevStep" class="btn btn-secondary btn-back disabled">
+                <i class="fa-solid fa-chevron-left"></i> Previous
+            </button>
+            <button id="btnNextStep" class="btn btn-primary btn-next">
+                Next: Education <i class="fa-solid fa-chevron-right"></i>
+            </button>
+        </footer>
+
+    </aside>
+
+    <!-- Right Pane: Real-Time Preview Workspace -->
+    <main class="live-preview-pane">
+        
+        <!-- Live Toolbar Header -->
+        <div class="live-preview-toolbar">
+            <div class="score-badge">
+                <i class="fa-solid fa-fire score-fire-icon"></i>
+                <span>100% Resume Score</span>
+            </div>
+            <div style="display: flex; gap: 8px;">
+                <button id="btnToggleFullScreen" class="btn btn-outline btn-sm">
+                    <i class="fa-solid fa-expand" id="toggleIcon"></i> <span id="toggleText">Full Screen</span>
+                </button>
+                <button id="btnChangeTemplateWorkspace" class="btn btn-outline btn-sm">
+                    <i class="fa-solid fa-table-cells-large"></i> Change Template
+                </button>
+            </div>
+        </div>
+
+        <!-- Center Paper Content Container -->
+        <div class="live-preview-viewport">
+            <div id="templateContainer" class="paper-preview">
+                <!-- Rendered layouts A, B, C populate dynamically here -->
+            </div>
+        </div>
+
+    </main>
+
+</div>
+
+<!-- Dynamic Template Engine and Loader -->
+<script src="templates/template-engine.js"></script>
+<script src="templates/template-loader.js"></script>
+<script src="js/common.js"></script>
+<script src="js/editor.js"></script>
+</body>
+</html>

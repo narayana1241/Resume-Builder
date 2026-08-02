@@ -1,0 +1,45 @@
+/* Grid Layout for Personal Form */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 24px;
+    row-gap: 16px;
+    margin-bottom: 32px;
+}
+
+.form-group.full-width {
+    grid-column: span 2;
+}
+
+/* Button Navigation Row */
+.buttons-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--border-color);
+    padding-top: 24px;
+}
+
+.btn-back {
+    padding: 12px 28px;
+}
+
+.btn-next {
+    padding: 12px 32px;
+}
+
+@media (max-width: 768px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+    .form-group.full-width {
+        grid-column: span 1;
+    }
+    .buttons-row {
+        flex-direction: column;
+        gap: 12px;
+    }
+    .btn {
+        width: 100%;
+    }
+}

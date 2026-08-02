@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Builder | Dashboard</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body data-page="dashboard">
+
+<div class="container">
+
+    <!-- Sidebar loads dynamically here -->
+    <div id="sidebar"></div>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+        
+        <!-- Premium Header -->
+        <header class="saas-header animate-fade">
+            <div>
+                <h1>Dashboard</h1>
+                <p>Welcome back to your workspace</p>
+            </div>
+            
+            <div class="profile">
+                <i class="fa-solid fa-user"></i>
+                Welcome, <strong id="username">Guest</strong>
+            </div>
+        </header>
+
+        <!-- Quote / Banner Section -->
+        <section class="banner-section animate-slide">
+            <div class="banner-content">
+                <i class="fa-solid fa-quote-left banner-quote-icon"></i>
+                <div class="banner-text">
+                    <h3>"A great resume opens the door to great opportunities."</h3>
+                    <p>Build, update, and manage your resumes with ease using our premium templates.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SaaS Stats Section -->
+        <section class="stats-grid animate-slide">
+            <div class="stat-card">
+                <div class="stat-icon-wrapper">
+                    <i class="fa-solid fa-file-invoice"></i>
+                </div>
+                <div class="stat-data">
+                    <span class="stat-val">1</span>
+                    <span class="stat-lbl">Total Resumes</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon-wrapper success">
+                    <i class="fa-solid fa-bolt"></i>
+                </div>
+                <div class="stat-data">
+                    <span class="stat-val">Active</span>
+                    <span class="stat-lbl">Subscription Status</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon-wrapper info">
+                    <i class="fa-solid fa-palette"></i>
+                </div>
+                <div class="stat-data">
+                    <span class="stat-val">4</span>
+                    <span class="stat-lbl">Premium Templates</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Actions Grid -->
+        <h2 class="section-title animate-slide">Quick Actions</h2>
+        <section class="cards animate-slide">
+            
+            <div class="card">
+                <div class="card-icon-box">
+                    <i class="fa-solid fa-file-circle-plus"></i>
+                </div>
+                <h2>Create Resume</h2>
+                <p>Start from scratch with a professional layout</p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon-box secondary">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                </div>
+                <h2>Update Resume</h2>
+                <p>Modify and refine your current resumes</p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon-box info">
+                    <i class="fa-solid fa-folder-open"></i>
+                </div>
+                <h2>My Resumes</h2>
+                <p>View, manage, and download your resumes</p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon-box danger">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                </div>
+                <h2>Logout</h2>
+                <p>Safely log out of your current session</p>
+            </div>
+
+        </section>
+
+        <!-- Tips Section -->
+        <section class="tips-card saas-card animate-slide">
+            <h2><i class="fa-solid fa-circle-info"></i> Pro Resume Tips</h2>
+            <ul>
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    <span>Keep your resume concise (1-2 pages maximum).</span>
+                </li>
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    <span>Tailor your professional summary for each job description.</span>
+                </li>
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    <span>Focus on quantifiable achievements rather than just duties.</span>
+                </li>
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    <span>Always preview your PDF before final download.</span>
+                </li>
+            </ul>
+        </section>
+
+    </main>
+
+</div>
+
+<script src="js/common.js"></script>
+<script src="js/dashboard.js"></script>
+<script>
+    // Set logged in username inside header welcome tag
+    window.addEventListener('DOMContentLoaded', () => {
+        const fullName = localStorage.getItem("full_name");
+        const usernameEl = document.getElementById("username");
+        if (fullName && usernameEl) {
+            usernameEl.textContent = fullName;
+        }
+    });
+</script>
+</body>
+</html>

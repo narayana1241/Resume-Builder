@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Builder | Projects</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/projects.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body data-page="create">
+
+<div class="container">
+
+    <!-- Sidebar loads dynamically here -->
+    <div id="sidebar"></div>
+
+    <main class="main-content">
+
+        <!-- Dynamic Header -->
+        <header class="saas-header animate-fade">
+            <div>
+                <h1>Resume Builder</h1>
+                <p>Create Your Professional Resume</p>
+            </div>
+
+            <div class="profile">
+                <i class="fa-solid fa-user"></i>
+                Welcome, <strong id="username">Guest</strong>
+            </div>
+        </header>
+
+        <!-- Progress Steps -->
+        <div class="steps animate-slide">
+            <div class="step completed">
+                <span><i class="fa-solid fa-user"></i></span>
+                <p>Personal Details</p>
+            </div>
+            <div class="step completed">
+                <span><i class="fa-solid fa-graduation-cap"></i></span>
+                <p>Education</p>
+            </div>
+            <div class="step completed">
+                <span><i class="fa-solid fa-briefcase"></i></span>
+                <p>Experience</p>
+            </div>
+            <div class="step completed">
+                <span><i class="fa-solid fa-code"></i></span>
+                <p>Skills</p>
+            </div>
+            <div class="step active">
+                <span><i class="fa-solid fa-folder-open"></i></span>
+                <p>Projects</p>
+            </div>
+            <div class="step">
+                <span><i class="fa-solid fa-certificate"></i></span>
+                <p>Certifications</p>
+            </div>
+            <div class="step">
+                <span><i class="fa-solid fa-eye"></i></span>
+                <p>Preview</p>
+            </div>
+        </div>
+
+        <!-- Projects Card -->
+        <div class="saas-card animate-slide">
+            
+            <div style="margin-bottom: 28px;">
+                <h2 style="font-size: 20px; font-weight: 700; display: flex; align-items: center; gap: 8px;">
+                    <i class="fa-solid fa-folder-open" style="color: var(--primary);"></i>
+                    Projects
+                </h2>
+                <p style="font-size: 14px; color: var(--text-light); margin-top: 4px;">Add your top academic, personal, or professional projects</p>
+            </div>
+
+            <form id="projectsForm">
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+                        <label for="project_name">Project Name <span>*</span></label>
+                        <input type="text" id="project_name" class="form-input" placeholder="e.g. Portfolio Website" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="role">Your Role</label>
+                        <input type="text" id="role" class="form-input" placeholder="e.g. Lead Frontend Developer">
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="technologies_used">Technologies Used</label>
+                        <input type="text" id="technologies_used" class="form-input" placeholder="e.g. React, Node.js, Express, PostgreSQL">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="start_date">Start Date</label>
+                        <input type="date" id="start_date" class="form-input">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="end_date">End Date</label>
+                        <input type="date" id="end_date" class="form-input">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="github_url">GitHub URL</label>
+                        <input type="url" id="github_url" class="form-input" placeholder="e.g. https://github.com/username/project">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="live_project_url">Live Demo URL</label>
+                        <input type="url" id="live_project_url" class="form-input" placeholder="e.g. https://myproject.com">
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="project_description">Project Description</label>
+                        <textarea
+                            id="project_description"
+                            class="form-textarea"
+                            rows="5"
+                            placeholder="Describe the purpose, features built, and your exact technical contributions to this project..."></textarea>
+                    </div>
+
+                </div>
+
+                <div class="form-action-row">
+                    <button
+                        type="button"
+                        id="btnAddProject"
+                        class="btn btn-primary btn-add">
+                        <i class="fa-solid fa-plus"></i>
+                        Add Project
+                    </button>
+                </div>
+
+                <div class="projects-list-section">
+                    <h3>Added Projects</h3>
+                    
+                    <div class="saas-table-container">
+                        <table class="saas-table project-table">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Project Name</th>
+                                    <th>Role</th>
+                                    <th>Technologies</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="projectBody">
+                                <!-- Dynamic Projects loaded here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="buttons-row">
+                    
+                    <button
+                        type="button"
+                        class="btn btn-secondary btn-back"
+                        onclick="window.history.back()">
+                        <i class="fa-solid fa-arrow-left"></i>
+                        Previous
+                    </button>
+
+                    <button
+                        type="button"
+                        id="btnNext"
+                        class="btn btn-primary btn-next">
+                        Save & Next
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </main>
+
+</div>
+
+<script src="js/common.js"></script>
+<script src="js/projects.js"></script>
+<script>
+    // Set username in header
+    window.addEventListener('DOMContentLoaded', () => {
+        const fullName = localStorage.getItem("full_name");
+        const usernameEl = document.getElementById("username");
+        if (fullName && usernameEl) {
+            usernameEl.textContent = fullName;
+        }
+    });
+</script>
+</body>
+</html>

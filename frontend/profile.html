@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Builder | My Profile</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/global.css">
+    <style>
+        .profile-card {
+            max-width: 600px;
+            margin-top: 24px;
+        }
+        .profile-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+        .profile-field {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .profile-field label {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+        .profile-field input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1.5px solid var(--border-color);
+            border-radius: var(--radius-md);
+            background: var(--bg-main);
+            color: var(--text-main);
+            font-size: 15px;
+            outline: none;
+            cursor: not-allowed;
+        }
+    </style>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body data-page="profile">
+
+<div class="container">
+
+    <!-- Sidebar loads dynamically here -->
+    <div id="sidebar"></div>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+        
+        <!-- Premium Header -->
+        <header class="saas-header animate-fade">
+            <div>
+                <h1>My Profile</h1>
+                <p>Manage your account and contact details</p>
+            </div>
+            
+            <div class="profile">
+                <i class="fa-solid fa-user"></i>
+                Welcome, <strong id="username">Guest</strong>
+            </div>
+        </header>
+
+        <!-- Profile Details Card -->
+        <div class="saas-card profile-card animate-slide">
+            <h2>
+                <i class="fa-solid fa-address-card" style="color: var(--primary); margin-right: 8px;"></i>
+                Account Details
+            </h2>
+            <p class="card-desc">Your basic contact information from the database.</p>
+
+            <form id="profileForm">
+                <div class="profile-grid">
+                    <div class="profile-field">
+                        <label for="prof_name">Full Name</label>
+                        <input type="text" id="prof_name" readonly>
+                    </div>
+                    <div class="profile-field">
+                        <label for="prof_email">Email Address</label>
+                        <input type="email" id="prof_email" readonly>
+                    </div>
+                    <div class="profile-field">
+                        <label for="prof_mobile">Mobile Number</label>
+                        <input type="text" id="prof_mobile" readonly>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </main>
+
+</div>
+
+<script src="js/common.js"></script>
+<script src="js/profile.js"></script>
+</body>
+</html>

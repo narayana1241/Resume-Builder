@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Builder | Experience</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/experience.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body data-page="create">
+
+<div class="container">
+
+    <!-- Sidebar loads dynamically here -->
+    <div id="sidebar"></div>
+
+    <main class="main-content">
+
+        <!-- Dynamic Header -->
+        <header class="saas-header animate-fade">
+            <div>
+                <h1>Resume Builder</h1>
+                <p>Create Your Professional Resume</p>
+            </div>
+
+            <div class="profile">
+                <i class="fa-solid fa-user"></i>
+                Welcome, <strong id="username">Guest</strong>
+            </div>
+        </header>
+
+        <!-- Progress Steps -->
+        <div class="steps animate-slide">
+            <div class="step completed">
+                <span><i class="fa-solid fa-user"></i></span>
+                <p>Personal Details</p>
+            </div>
+            <div class="step completed">
+                <span><i class="fa-solid fa-graduation-cap"></i></span>
+                <p>Education</p>
+            </div>
+            <div class="step active">
+                <span><i class="fa-solid fa-briefcase"></i></span>
+                <p>Experience</p>
+            </div>
+            <div class="step">
+                <span><i class="fa-solid fa-code"></i></span>
+                <p>Skills</p>
+            </div>
+            <div class="step">
+                <span><i class="fa-solid fa-folder-open"></i></span>
+                <p>Projects</p>
+            </div>
+            <div class="step">
+                <span><i class="fa-solid fa-certificate"></i></span>
+                <p>Certifications</p>
+            </div>
+            <div class="step">
+                <span><i class="fa-solid fa-eye"></i></span>
+                <p>Preview</p>
+            </div>
+        </div>
+
+        <!-- Experience Card -->
+        <div class="saas-card animate-slide">
+            
+            <div style="margin-bottom: 28px;">
+                <h2 style="font-size: 20px; font-weight: 700; display: flex; align-items: center; gap: 8px;">
+                    <i class="fa-solid fa-briefcase" style="color: var(--primary);"></i>
+                    Experience Details
+                </h2>
+                <p style="font-size: 14px; color: var(--text-light); margin-top: 4px;">Add your work history, job roles, and job description details</p>
+            </div>
+
+            <form id="experienceForm">
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+                        <label for="company_name">Company Name <span>*</span></label>
+                        <input type="text" id="company_name" class="form-input" placeholder="e.g. Google" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="job_title">Job Title</label>
+                        <input type="text" id="job_title" class="form-input" placeholder="e.g. Frontend Engineer">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="employment_type">Employment Type <span>*</span></label>
+                        <input type="text" id="employment_type" class="form-input" placeholder="e.g. Full-time, Contract, Internship" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="location">Location</label>
+                        <input type="text" id="location" class="form-input" placeholder="e.g. Mountain View, CA">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="start_date">Start Date</label>
+                        <input type="date" id="start_date" class="form-input">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="end_date">End Date</label>
+                        <input type="date" id="end_date" class="form-input">
+                    </div>
+
+                    <div class="form-group checkbox" style="margin-top: 28px; grid-column: span 2;">
+                        <label>
+                            <input type="checkbox" id="currently_working">
+                            Currently Working Here
+                        </label>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="job_description">Job Description</label>
+                        <textarea
+                            id="job_description"
+                            class="form-textarea"
+                            rows="5"
+                            placeholder="Describe your responsibilities, technical achievements, and contributions in this role..."></textarea>
+                    </div>
+
+                </div>
+
+                <div class="buttons-row">
+                    
+                    <button
+                        type="button"
+                        class="btn btn-secondary btn-back"
+                        onclick="window.history.back()">
+                        <i class="fa-solid fa-arrow-left"></i>
+                        Previous
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary btn-next">
+                        Save & Next
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </main>
+
+</div>
+
+<script src="js/common.js"></script>
+<script src="js/experience.js"></script>
+<script>
+    // Set username in header
+    window.addEventListener('DOMContentLoaded', () => {
+        const fullName = localStorage.getItem("full_name");
+        const usernameEl = document.getElementById("username");
+        if (fullName && usernameEl) {
+            usernameEl.textContent = fullName;
+        }
+    });
+</script>
+</body>
+</html>

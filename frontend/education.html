@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Builder | Education</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/education.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body data-page="create">
+
+<div class="container">
+
+    <!-- Sidebar loads dynamically here -->
+    <div id="sidebar"></div>
+
+    <main class="main-content">
+
+        <!-- Dynamic Header -->
+        <header class="saas-header animate-fade">
+            <div>
+                <h1>Resume Builder</h1>
+                <p>Create Your Professional Resume</p>
+            </div>
+
+            <div class="profile">
+                <i class="fa-solid fa-user"></i>
+                Welcome, <strong id="username">Guest</strong>
+            </div>
+        </header>
+
+        <!-- Progress Steps -->
+        <div class="steps animate-slide">
+            <div class="step completed">
+                <span><i class="fa-solid fa-user"></i></span>
+                <p>Personal Details</p>
+            </div>
+            <div class="step active">
+                <span><i class="fa-solid fa-graduation-cap"></i></span>
+                <p>Education</p>
+            </div>
+            <div class="step">
+                <span><i class="fa-solid fa-briefcase"></i></span>
+                <p>Experience</p>
+            </div>
+            <div class="step">
+                <span><i class="fa-solid fa-code"></i></span>
+                <p>Skills</p>
+            </div>
+            <div class="step">
+                <span><i class="fa-solid fa-folder-open"></i></span>
+                <p>Projects</p>
+            </div>
+            <div class="step">
+                <span><i class="fa-solid fa-certificate"></i></span>
+                <p>Certifications</p>
+            </div>
+            <div class="step">
+                <span><i class="fa-solid fa-eye"></i></span>
+                <p>Preview</p>
+            </div>
+        </div>
+
+        <!-- Education Card -->
+        <div class="saas-card animate-slide">
+            
+            <div style="margin-bottom: 28px;">
+                <h2 style="font-size: 20px; font-weight: 700; display: flex; align-items: center; gap: 8px;">
+                    <i class="fa-solid fa-graduation-cap" style="color: var(--primary);"></i>
+                    Education Details
+                </h2>
+                <p style="font-size: 14px; color: var(--text-light); margin-top: 4px;">Add details about your degrees and academic background</p>
+            </div>
+
+            <form id="educationForm">
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+                        <label for="degree">Degree <span>*</span></label>
+                        <input type="text" id="degree" class="form-input" placeholder="e.g. B.S. in Computer Science" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="institution">Institution / College <span>*</span></label>
+                        <input type="text" id="institution" class="form-input" placeholder="e.g. Stanford University" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="university">University (if different)</label>
+                        <input type="text" id="university" class="form-input" placeholder="e.g. Stanford University Board">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="field_of_study">Field of Study</label>
+                        <input type="text" id="field_of_study" class="form-input" placeholder="e.g. Software Engineering">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="start_year">Start Year</label>
+                        <input type="number" id="start_year" class="form-input" placeholder="e.g. 2021">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="end_year">End Year</label>
+                        <input type="number" id="end_year" class="form-input" placeholder="e.g. 2025">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cgpa">CGPA / Percentage</label>
+                        <input type="text" id="cgpa" class="form-input" placeholder="e.g. 3.8 / 4.0 or 85%">
+                    </div>
+
+                    <div class="form-group checkbox" style="margin-top: 28px;">
+                        <label>
+                            <input type="checkbox" id="currently_studying">
+                            Currently Studying Here
+                        </label>
+                    </div>
+
+                </div>
+
+                <div class="buttons-row">
+                    
+                    <button
+                        type="button"
+                        class="btn btn-secondary btn-back"
+                        onclick="window.history.back()">
+                        <i class="fa-solid fa-arrow-left"></i>
+                        Previous
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary btn-next">
+                        Save & Next
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </main>
+
+</div>
+
+<script src="js/common.js"></script>
+<script src="js/education.js"></script>
+<script>
+    // Set username in header
+    window.addEventListener('DOMContentLoaded', () => {
+        const fullName = localStorage.getItem("full_name");
+        const usernameEl = document.getElementById("username");
+        if (fullName && usernameEl) {
+            usernameEl.textContent = fullName;
+        }
+    });
+</script>
+</body>
+</html>

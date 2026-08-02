@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Builder | Choose Template</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/select_template.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body>
+
+<!-- Sticky Header -->
+<header class="gallery-header">
+    <div class="header-left">
+        <button id="btnBackToEditor" class="btn btn-outline btn-sm">
+            <i class="fa-solid fa-arrow-left"></i> Back to Editor
+        </button>
+        <h2>Select Resume Template</h2>
+    </div>
+
+    <!-- Search & Filter Controls -->
+    <div class="header-center">
+        <div class="search-box">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            <input type="text" id="templateSearch" placeholder="Search templates by name...">
+        </div>
+    </div>
+
+    <div class="header-right">
+        <div class="filter-badges">
+            <button class="filter-badge active" data-filter="all">All</button>
+            <button class="filter-badge" data-filter="ats">ATS Friendly</button>
+            <button class="filter-badge" data-filter="premium">Premium</button>
+        </div>
+    </div>
+</header>
+
+<!-- Main Grid Canvas -->
+<main class="gallery-container">
+    <div class="templates-gallery-grid" id="templatesGalleryGrid">
+        <!-- Dynamic templates cards render here -->
+    </div>
+</main>
+
+<!-- JS Scripts -->
+<script src="js/select_template.js"></script>
+</body>
+</html>

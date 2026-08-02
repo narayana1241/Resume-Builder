@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Builder | Choose Template</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/create_resume.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body data-page="create">
+
+    <div class="container">
+
+        <!-- Sidebar loads dynamically here -->
+        <div id="sidebar"></div>
+
+        <!-- Main -->
+        <main class="main-content">
+
+            <header class="saas-header animate-fade">
+                <div>
+                    <h1>Create New Resume</h1>
+                    <p>Provide a title and choose a premium template layout</p>
+                </div>
+
+                <div class="profile">
+                    <i class="fa-solid fa-user"></i>
+                    Welcome, <strong id="username">Guest</strong>
+                </div>
+            </header>
+
+            <!-- Resume Form Card -->
+            <div class="saas-card animate-slide">
+                <h2>
+                    <i class="fa-solid fa-file-circle-plus" style="color: var(--primary); margin-right: 8px;"></i>
+                    Resume Details
+                </h2>
+                <p class="card-desc">Enter the title of your resume and pick one of our optimized designs to get started.</p>
+
+                <form id="resumeForm">
+                    <div class="form-group">
+                        <label for="resume_title">Resume Title <span>*</span></label>
+                        <input
+                            type="text"
+                            id="resume_title"
+                            class="form-input"
+                            placeholder="e.g. Senior Software Engineer Resume"
+                            required>
+                        <small style="color: var(--text-light); font-size: 12px; margin-top: 4px; display: block;">
+                            Give your resume a name to distinguish it in your dashboard.
+                        </small>
+                    </div>
+
+                    <h3 style="margin-top: 36px; margin-bottom: 18px; font-size: 18px; font-weight: 700;">
+                        Choose Resume Template
+                    </h3>
+
+                    <div class="templates" id="templatesContainer"></div>
+
+
+
+                    <div class="buttons-row">
+                        <button
+                            type="button"
+                            class="btn btn-secondary cancel-btn"
+                            onclick="window.history.back()">
+                            Cancel
+                        </button>
+                    </div>
+
+                </form>
+
+            </div>
+
+        </main>
+
+    </div>
+
+    <script src="js/common.js"></script>
+    <script src="js/create_resume.js"></script>
+    <script>
+        // Set username in header
+        window.addEventListener('DOMContentLoaded', () => {
+            const fullName = localStorage.getItem("full_name");
+            const usernameEl = document.getElementById("username");
+            if (fullName && usernameEl) {
+                usernameEl.textContent = fullName;
+            }
+        });
+    </script>
+</body>
+</html>

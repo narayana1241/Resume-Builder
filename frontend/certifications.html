@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Builder | Certifications</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/certifications.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body data-page="create">
+
+<div class="container">
+
+    <!-- Sidebar loads dynamically here -->
+    <div id="sidebar"></div>
+
+    <main class="main-content">
+
+        <!-- Dynamic Header -->
+        <header class="saas-header animate-fade">
+            <div>
+                <h1>Resume Builder</h1>
+                <p>Create Your Professional Resume</p>
+            </div>
+
+            <div class="profile">
+                <i class="fa-solid fa-user"></i>
+                Welcome, <strong id="username">Guest</strong>
+            </div>
+        </header>
+
+        <!-- Progress Steps -->
+        <div class="steps animate-slide">
+            <div class="step completed">
+                <span><i class="fa-solid fa-user"></i></span>
+                <p>Personal Details</p>
+            </div>
+            <div class="step completed">
+                <span><i class="fa-solid fa-graduation-cap"></i></span>
+                <p>Education</p>
+            </div>
+            <div class="step completed">
+                <span><i class="fa-solid fa-briefcase"></i></span>
+                <p>Experience</p>
+            </div>
+            <div class="step completed">
+                <span><i class="fa-solid fa-code"></i></span>
+                <p>Skills</p>
+            </div>
+            <div class="step completed">
+                <span><i class="fa-solid fa-folder-open"></i></span>
+                <p>Projects</p>
+            </div>
+            <div class="step active">
+                <span><i class="fa-solid fa-certificate"></i></span>
+                <p>Certifications</p>
+            </div>
+            <div class="step">
+                <span><i class="fa-solid fa-eye"></i></span>
+                <p>Preview</p>
+            </div>
+        </div>
+
+        <!-- Certifications Card -->
+        <div class="saas-card animate-slide">
+            
+            <div style="margin-bottom: 28px;">
+                <h2 style="font-size: 20px; font-weight: 700; display: flex; align-items: center; gap: 8px;">
+                    <i class="fa-solid fa-certificate" style="color: var(--primary);"></i>
+                    Certifications
+                </h2>
+                <p style="font-size: 14px; color: var(--text-light); margin-top: 4px;">Add your professional certifications, licenses, and achievements</p>
+            </div>
+
+            <form id="certificationForm">
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+                        <label for="certification_name">Certification Name <span>*</span></label>
+                        <input type="text" id="certification_name" class="form-input" placeholder="e.g. AWS Certified Solutions Architect" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="issuing_organization">Issuing Organization <span>*</span></label>
+                        <input type="text" id="issuing_organization" class="form-input" placeholder="e.g. Amazon Web Services" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="issue_date">Issue Date</label>
+                        <input type="date" id="issue_date" class="form-input">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="expiry_date">Expiry Date</label>
+                        <input type="date" id="expiry_date" class="form-input">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="credential_id">Credential ID</label>
+                        <input type="text" id="credential_id" class="form-input" placeholder="e.g. AWS-123456789">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="credential_url">Credential URL</label>
+                        <input type="url" id="credential_url" class="form-input" placeholder="e.g. https://creds.com/aws-123">
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="description">Description</label>
+                        <textarea
+                            id="description"
+                            class="form-textarea"
+                            rows="5"
+                            placeholder="Write a brief overview about what you learned or achieved in this certification..."></textarea>
+                    </div>
+
+                </div>
+
+                <div class="form-action-row">
+                    <button
+                        type="button"
+                        id="btnAddCertification"
+                        class="btn btn-primary btn-add">
+                        <i class="fa-solid fa-plus"></i>
+                        Add Certification
+                    </button>
+                </div>
+
+                <div class="certifications-list-section">
+                    <h3>Added Certifications</h3>
+                    
+                    <div class="saas-table-container">
+                        <table class="saas-table certification-table">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Certification</th>
+                                    <th>Organization</th>
+                                    <th>Issue Date</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="certificationBody">
+                                <!-- Dynamic Certifications loaded here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="buttons-row">
+                    
+                    <button
+                        type="button"
+                        class="btn btn-secondary btn-back"
+                        onclick="window.history.back()">
+                        <i class="fa-solid fa-arrow-left"></i>
+                        Previous
+                    </button>
+
+                    <button
+                        type="button"
+                        id="btnNext"
+                        class="btn btn-primary btn-next">
+                        Save & Next
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </main>
+
+</div>
+
+<script src="js/common.js"></script>
+<script src="js/certifications.js"></script>
+<script>
+    // Set username in header
+    window.addEventListener('DOMContentLoaded', () => {
+        const fullName = localStorage.getItem("full_name");
+        const usernameEl = document.getElementById("username");
+        if (fullName && usernameEl) {
+            usernameEl.textContent = fullName;
+        }
+    });
+</script>
+</body>
+</html>

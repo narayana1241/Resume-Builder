@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Builder | Upload Resume</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/upload_resume.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body>
+
+<div class="upload-page-container">
+    
+    <!-- Wizard Header -->
+    <header class="upload-header animate-fade">
+        <h1>How do you want to upload your resume?</h1>
+        <p>Just review, edit, and update it with new information</p>
+    </header>
+
+    <!-- Upload Workspace Card -->
+    <main class="upload-workspace saas-card animate-slide">
+        
+        <div class="upload-grid">
+            
+            <!-- Left: Drag and Drop -->
+            <div class="upload-left">
+                <div class="drop-zone" id="dropZone">
+                    <div class="drop-zone-content" id="dropZoneContent">
+                        <div class="upload-icon-box">
+                            <i class="fa-solid fa-file-arrow-up"></i>
+                        </div>
+                        <h3>Drag and drop a file here</h3>
+                        <label class="btn btn-primary btn-browse">
+                            Browse
+                            <input type="file" id="fileInput" accept=".doc,.docx,.pdf,.html,.rtf,.txt" style="display: none;">
+                        </label>
+                        <p class="formats-text">Files we can read: DOC, DOCX, PDF, HTML, RTF, TXT</p>
+                    </div>
+                    
+                    <!-- Upload Success/Status View (hidden by default) -->
+                    <div class="upload-status-view" id="uploadStatusView" style="display: none;">
+                        <i class="fa-solid fa-circle-check success-icon"></i>
+                        <h4 id="uploadedFileName">my_resume.pdf</h4>
+                        <p id="uploadedFileSize">1.2 MB</p>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar-fill" id="progressBarFill"></div>
+                        </div>
+                        <button type="button" class="btn btn-secondary btn-sm" id="btnRemoveFile">
+                            <i class="fa-solid fa-trash"></i> Remove File
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Middle: OR Divider -->
+            <div class="upload-divider">
+                <span class="divider-line"></span>
+                <span class="divider-text">OR</span>
+                <span class="divider-line"></span>
+            </div>
+
+            <!-- Right: Cloud Integrations -->
+            <div class="upload-right">
+                <div class="cloud-buttons">
+                    <button class="btn-cloud" id="btnGoogleDrive">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/1/12/Google_Drive_icon_%282020%29.svg" alt="Google Drive Logo" class="cloud-logo">
+                        Google Drive
+                    </button>
+                    <button class="btn-cloud" id="btnDropbox">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Dropbox_Icon.svg" alt="Dropbox Logo" class="cloud-logo">
+                        Dropbox
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- Footer Action Panel -->
+    <footer class="upload-footer animate-fade">
+        
+        <div class="footer-actions">
+            
+            <div class="footer-left">
+                <span>Want to start from scratch?</span>
+                <a href="create_resume.html" class="scratch-link">
+                    Build New Resume <i class="fa-solid fa-chevron-right"></i>
+                </a>
+            </div>
+
+            <button type="button" class="btn btn-next disabled" id="btnNext">
+                Next
+            </button>
+
+        </div>
+
+        <p class="terms-text">By clicking Next, you agree to our <a href="#">Terms of Use</a> and <a href="#">Privacy Policy</a>.</p>
+
+    </footer>
+
+</div>
+
+<!-- Scripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
+<script src="js/upload_resume.js"></script>
+</body>
+</html>

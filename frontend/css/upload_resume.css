@@ -1,0 +1,329 @@
+body {
+    background: var(--bg-main);
+    color: var(--text-main);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 40px 20px;
+    margin: 0;
+}
+
+.upload-page-container {
+    width: 100%;
+    max-width: 960px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+/* Header Panel */
+.upload-header {
+    text-align: center;
+}
+
+.upload-header h1 {
+    font-family: var(--font-heading);
+    font-size: 32px;
+    font-weight: 800;
+    color: #0f172a;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+}
+
+.upload-header p {
+    font-size: 16px;
+    color: var(--text-light);
+}
+
+/* Workspace Card */
+.upload-workspace {
+    padding: 40px;
+    background: #ffffff;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+}
+
+.upload-grid {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+/* Left: Drop Zone */
+.upload-left {
+    flex: 1.2;
+}
+
+.drop-zone {
+    border: 2px dashed #cbd5e1;
+    border-radius: var(--radius-lg);
+    padding: 40px 24px;
+    text-align: center;
+    background: #f8fafc;
+    transition: var(--transition);
+    cursor: pointer;
+    min-height: 240px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.drop-zone:hover, .drop-zone.dragover {
+    border-color: var(--primary);
+    background: var(--primary-light);
+}
+
+.upload-icon-box {
+    width: 56px;
+    height: 56px;
+    border-radius: var(--radius-md);
+    background: #f1f5f9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    color: #64748b;
+    font-size: 24px;
+    transition: var(--transition);
+}
+
+.drop-zone:hover .upload-icon-box {
+    background: #e0e7ff;
+    color: var(--primary);
+}
+
+.drop-zone h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 16px;
+}
+
+.btn-browse {
+    padding: 8px 24px;
+    font-size: 13px;
+    font-weight: 700;
+    background: var(--primary);
+    color: #ffffff;
+    cursor: pointer;
+    border-radius: var(--radius-full);
+}
+
+.btn-browse:hover {
+    background: var(--primary-hover);
+}
+
+.formats-text {
+    margin-top: 16px;
+    font-size: 11px;
+    color: #64748b;
+    font-weight: 500;
+}
+
+/* Upload Status / Progress */
+.upload-status-view {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.success-icon {
+    font-size: 40px;
+    color: var(--success);
+    margin-bottom: 12px;
+}
+
+.upload-status-view h4 {
+    font-size: 14px;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 4px;
+    word-break: break-all;
+}
+
+.upload-status-view p {
+    font-size: 12px;
+    color: var(--text-light);
+    margin-bottom: 16px;
+}
+
+.progress-bar-container {
+    width: 100%;
+    max-width: 200px;
+    height: 6px;
+    background: #e2e8f0;
+    border-radius: var(--radius-full);
+    overflow: hidden;
+    margin-bottom: 16px;
+}
+
+.progress-bar-fill {
+    width: 0;
+    height: 100%;
+    background: var(--success);
+    border-radius: var(--radius-full);
+    transition: width 0.4s ease;
+}
+
+/* Middle: OR Divider */
+.upload-divider {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    height: 100%;
+}
+
+.divider-line {
+    width: 1px;
+    height: 80px;
+    background: #e2e8f0;
+}
+
+.divider-text {
+    font-size: 14px;
+    font-weight: 600;
+    color: #94a3b8;
+}
+
+/* Right: Cloud Integration */
+.upload-right {
+    flex: 0.8;
+}
+
+.cloud-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.btn-cloud {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background: #ffffff;
+    border: 1.5px solid #cbd5e1;
+    color: #1e293b;
+    padding: 12px 24px;
+    border-radius: var(--radius-full);
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn-cloud:hover {
+    border-color: var(--primary);
+    background: var(--primary-light);
+    color: var(--primary);
+}
+
+.cloud-logo {
+    width: 20px;
+    height: 20px;
+}
+
+/* Footer Section */
+.upload-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.footer-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--border-color);
+    padding-top: 24px;
+}
+
+.footer-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: var(--text-light);
+}
+
+.scratch-link {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.scratch-link:hover {
+    text-decoration: underline;
+}
+
+.btn-next {
+    padding: 14px 44px;
+    font-size: 15px;
+    font-weight: 700;
+    background: #fbbf24; /* Yellow Accent */
+    color: #1e293b;
+    border-radius: var(--radius-full);
+    border: none;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn-next:hover:not(.disabled) {
+    background: #f59e0b;
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.2);
+}
+
+.btn-next.disabled {
+    background: #e2e8f0;
+    color: #94a3b8;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.terms-text {
+    text-align: center;
+    font-size: 11px;
+    color: #94a3b8;
+}
+
+.terms-text a {
+    color: #64748b;
+    text-decoration: underline;
+}
+
+/* Responsive Rules */
+@media (max-width: 768px) {
+    .upload-grid {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .upload-divider {
+        flex-direction: row;
+        width: 100%;
+        height: auto;
+    }
+    
+    .divider-line {
+        width: 40%;
+        height: 1px;
+    }
+    
+    .footer-actions {
+        flex-direction: column;
+        gap: 16px;
+        align-items: center;
+    }
+    
+    .btn-next {
+        width: 100%;
+    }
+}
