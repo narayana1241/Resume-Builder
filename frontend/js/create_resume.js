@@ -1,6 +1,6 @@
-const API_BASE_URL = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
-    ? "http://localhost:5000"
-    : "";
+var API_BASE_URL = window.location.port === "5000"
+    ? ""
+    : (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1" ? "http://localhost:5000" : "");
 
 const resumeForm = document.getElementById("resumeForm");
 
@@ -15,18 +15,29 @@ window.addEventListener("DOMContentLoaded", async () => {
 // Fetch and Render Templates dynamically
 // ==========================================
 async function fetchAndRenderTemplates() {
+    const container = document.getElementById("templatesContainer");
+    if (!container) return;
     try {
+        container.innerHTML = `<div class="loading-msg" style="color: var(--text-light);"><i class="fa-solid fa-spinner fa-spin"></i> Loading templates...</div>`;
         const response = await fetch(`${API_BASE_URL}/api/templates`);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
         const result = await response.json();
         
         if (!result.success || !result.data || !result.data.data) {
             console.error("Failed to retrieve templates:", result);
+            container.innerHTML = `<div class="error-msg" style="color: var(--danger); font-weight: 500;">Failed to retrieve templates: ${JSON.stringify(result)}</div>`;
             return;
         }
 
         const templates = result.data.data;
-        const container = document.getElementById("templatesContainer");
         container.innerHTML = "";
+
+        if (templates.length === 0) {
+            container.innerHTML = `<div class="info-msg" style="color: var(--text-light);">No templates found in the database.</div>`;
+            return;
+        }
 
         templates.forEach((tpl, index) => {
             const isChecked = index === 0 ? "checked" : "";
@@ -82,6 +93,7 @@ async function fetchAndRenderTemplates() {
         });
     } catch (err) {
         console.error("Error loading templates dynamically:", err);
+        container.innerHTML = `<div class="error-msg" style="color: var(--danger); font-weight: 500;">Error loading templates: ${err.message}</div>`;
     }
 }
 

@@ -21,8 +21,10 @@ const TemplatesRoutes = require("./routes/templatesRoutes");
 
 const app = express();
 
-// Security Headers
-app.use(helmet());
+// Security Headers (disable CSP for inline script support)
+app.use(helmet({
+    contentSecurityPolicy: false
+}));
 
 // Logging Middleware
 if (process.env.NODE_ENV === "production") {
@@ -38,6 +40,7 @@ const allowedOrigins = [
     "http://localhost:5000",
     "http://localhost:5173",
     "http://localhost:5500",
+    "http://127.0.0.1:5000",
     "http://127.0.0.1:5500"
 ].filter(Boolean);
 

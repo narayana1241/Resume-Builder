@@ -7,6 +7,7 @@ const savePersonalDetails = async (req, res) => {
     try {
 
         const {
+            resume_personal_id,
             resume_id,
             first_name,
             last_name,
@@ -27,7 +28,7 @@ const savePersonalDetails = async (req, res) => {
 
         const jsonData = JSON.stringify([
             {
-                resume_personal_id: null,
+                resume_personal_id: resume_personal_id || null,
                 resume_id,
                 first_name,
                 last_name,

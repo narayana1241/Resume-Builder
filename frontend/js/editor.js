@@ -1,6 +1,6 @@
-const API_BASE_URL = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
-    ? "http://localhost:5000"
-    : "";
+var API_BASE_URL = window.location.port === "5000"
+    ? ""
+    : (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1" ? "http://localhost:5000" : "");
 
 // ==========================================
 // Resume Editor Workspace Controller
@@ -171,10 +171,11 @@ function debouncedSaveContacts() {
 async function saveContactsData() {
     const personal = previewData.personal_details[0] || {};
     try {
-        await fetch(`${API_BASE_URL}/api/personal/save`, {
+        const response = await fetch(`${API_BASE_URL}/api/personal/save`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
+                resume_personal_id: personal.resume_personal_id || null,
                 resume_id: resume_id,
                 first_name: document.getElementById("first_name").value,
                 last_name: document.getElementById("last_name").value,
@@ -192,6 +193,10 @@ async function saveContactsData() {
                 professional_summary: document.getElementById("professional_summary").value
             })
         });
+        const result = await response.json();
+        if ((result.error_cd === "00000" || result.error_cd === "0") && result.ref_id) {
+            personal.resume_personal_id = Number(result.ref_id);
+        }
     } catch (err) {
         console.error("Auto-save contacts error:", err);
     }
@@ -200,8 +205,17 @@ async function saveContactsData() {
 // ==========================================
 // Wizard Navigation
 // ==========================================
-function switchStep(newStep) {
+async function switchStep(newStep) {
     if (!stepsOrder.includes(newStep)) return;
+    
+    // Auto-save contacts details when leaving the contacts step
+    if (currentStep === "contacts" && newStep !== "contacts") {
+        try {
+            await saveContactsData();
+        } catch (err) {
+            console.error("Error auto-saving contacts on step switch:", err);
+        }
+    }
     
     // Hide active step content, show new one
     document.getElementById(`step-${currentStep}`).style.display = "none";
@@ -323,17 +337,17 @@ function setupEventListeners() {
 
     // 2. Wizard Header Clicks
     document.querySelectorAll(".step-nav-item").forEach(item => {
-        item.addEventListener("click", () => {
+        item.addEventListener("click", async () => {
             const targetStep = item.getAttribute("data-step");
-            switchStep(targetStep);
+            await switchStep(targetStep);
         });
     });
 
     // 3. Footer Navigation Buttons
-    document.getElementById("btnPrevStep").addEventListener("click", () => {
+    document.getElementById("btnPrevStep").addEventListener("click", async () => {
         const currentIndex = stepsOrder.indexOf(currentStep);
         if (currentIndex > 0) {
-            switchStep(stepsOrder[currentIndex - 1]);
+            await switchStep(stepsOrder[currentIndex - 1]);
         }
     });
 
@@ -345,7 +359,7 @@ function setupEventListeners() {
             window.location.href = "preview.html";
         } else {
             // Go to next step
-            switchStep(stepsOrder[currentIndex + 1]);
+            await switchStep(stepsOrder[currentIndex + 1]);
         }
     });
 
