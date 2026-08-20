@@ -1,0 +1,21 @@
+{
+  "name": "resume-builder",
+  "version": "1.0.0",
+  "description": "Resume Builder Application",
+  "main": "backend/server.js",
+  "scripts": {
+    "postinstall": "cd backend && npm install",
+    "start": "node backend/server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "helmet": "^8.3.0",
+    "morgan": "^1.11.0",
+    "pg": "^8.22.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
