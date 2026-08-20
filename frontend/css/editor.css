@@ -281,6 +281,18 @@ body {
     align-items: flex-start;
 }
 
+#templateContainer {
+    width: 794px;
+    min-height: 1123px;
+    height: auto;
+    background: #ffffff;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin: 0 auto;
+    overflow: visible;
+}
+
 /* Modal Styling */
 .modal-overlay {
     position: fixed;

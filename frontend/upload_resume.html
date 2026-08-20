@@ -104,8 +104,35 @@
 
 </div>
 
+<!-- Interactive Extracted Data Review & Confidence Screen Modal -->
+<div class="review-modal-overlay" id="reviewModal" style="display: none;">
+    <div class="review-modal-card animate-slide">
+        <div class="review-modal-header">
+            <div>
+                <h2><i class="fa-solid fa-wand-magic-sparkles"></i> Extracted Resume Review</h2>
+                <p>Verify your extracted sections and confidence metrics before opening the editor</p>
+            </div>
+            <span class="confidence-badge-pill" id="overallConfidenceBadge">95% Confidence</span>
+        </div>
+
+        <div class="review-modal-body" id="reviewModalBody">
+            <!-- Rendered dynamically in upload_resume.js -->
+        </div>
+
+        <div class="review-modal-footer">
+            <button type="button" class="btn btn-secondary" id="btnCancelReview">
+                <i class="fa-solid fa-arrow-left"></i> Change File
+            </button>
+            <button type="button" class="btn btn-primary" id="btnConfirmOpenEditor">
+                Confirm & Open Editor <i class="fa-solid fa-arrow-right"></i>
+            </button>
+        </div>
+    </div>
+</div>
+
 <!-- Scripts -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
 <script src="js/upload_resume.js"></script>
 </body>
 </html>

@@ -1,117 +1,92 @@
-<div class="resume layout-c">
-    <!-- Header -->
-    <header class="resume-header">
+<div class="resume tpl-003">
+    <header class="hero-block">
         <h1 class="resume-name">{{full_name}}</h1>
         <h2 class="resume-title">{{designation}}</h2>
-        <div class="resume-contact">
-            <!-- {{#if email}} --><span><i class="fa-solid fa-envelope"></i> {{email}}</span><!-- {{/if}} -->
-            <!-- {{#if mobile}} --><span><i class="fa-solid fa-phone"></i> {{mobile}}</span><!-- {{/if}} -->
-            <!-- {{#if location}} --><span><i class="fa-solid fa-location-dot"></i> {{location}}</span><!-- {{/if}} -->
-            <!-- {{#if linkedin_url}} --><span><i class="fa-brands fa-linkedin"></i> <a href="{{linkedin_url}}" target="_blank">LinkedIn</a></span><!-- {{/if}} -->
-            <!-- {{#if github_url}} --><span><i class="fa-brands fa-github"></i> <a href="{{github_url}}" target="_blank">GitHub</a></span><!-- {{/if}} -->
+        <div class="pills-grid">
+            <!-- {{#if email}} --><span class="pill"><i class="fa-solid fa-envelope"></i> {{email}}</span><!-- {{/if}} -->
+            <!-- {{#if mobile}} --><span class="pill"><i class="fa-solid fa-phone"></i> {{mobile}}</span><!-- {{/if}} -->
+            <!-- {{#if location}} --><span class="pill"><i class="fa-solid fa-location-dot"></i> {{location}}</span><!-- {{/if}} -->
+            <!-- {{#if linkedin_url}} --><span class="pill"><i class="fa-brands fa-linkedin"></i> <a href="{{linkedin_url}}" target="_blank">LinkedIn</a></span><!-- {{/if}} -->
+            <!-- {{#if github_url}} --><span class="pill"><i class="fa-brands fa-github"></i> <a href="{{github_url}}" target="_blank">GitHub</a></span><!-- {{/if}} -->
         </div>
     </header>
 
-    <!-- Summary -->
-    <!-- {{#if professional_summary}} -->
-    <section class="resume-section">
-        <h3><i class="fa-solid fa-circle-info"></i> About Me</h3>
-        <p class="summary-text">{{professional_summary}}</p>
-    </section>
-    <!-- {{/if}} -->
+    <div class="body-wrap">
+        <!-- {{#if professional_summary}} -->
+        <section class="section">
+            <h3 class="sec-head">Career Objective</h3>
+            <p class="obj-text">{{professional_summary}}</p>
+        </section>
+        <!-- {{/if}} -->
 
-    <!-- Skills -->
-    <!-- {{#if skills}} -->
-    <section class="resume-section">
-        <h3><i class="fa-solid fa-gears"></i> Core Competencies</h3>
-        <div class="skills-grid">
-            <!-- {{#skills}} -->
-            <div class="skill-card">
-                <span class="skill-name">{{skill_name}}</span>
-                <span class="skill-level">{{skill_level}}</span>
-            </div>
-            <!-- {{/skills}} -->
-        </div>
-    </section>
-    <!-- {{/if}} -->
-
-    <!-- Education -->
-    <!-- {{#if education}} -->
-    <section class="resume-section">
-        <h3><i class="fa-solid fa-graduation-cap"></i> Education</h3>
-        <div class="items-list">
+        <!-- {{#if education}} -->
+        <section class="section">
+            <h3 class="sec-head">Education</h3>
             <!-- {{#education}} -->
-            <div class="resume-item">
-                <div class="item-header">
-                    <span class="item-title">{{degree}} ({{field_of_study}})</span>
-                    <span class="item-date">{{start_year}} - {{end_year}}</span>
+            <div class="card-item">
+                <div class="c-head">
+                    <span class="title"><strong>{{degree}}</strong> in {{field_of_study}}</span>
+                    <span class="badge">{{start_year}} - {{end_year}}</span>
                 </div>
-                <div class="item-sub">{{institution}} | {{university}}</div>
-                <!-- {{#if cgpa_percentage}} --><p class="item-details">CGPA: {{cgpa_percentage}}</p><!-- {{/if}} -->
+                <div class="sub">{{institution}} <!-- {{#if university}} -->({{university}})<!-- {{/if}} --></div>
+                <!-- {{#if cgpa_percentage}} --><div class="cgpa-tag">CGPA / Percentage: <strong>{{cgpa_percentage}}</strong></div><!-- {{/if}} -->
             </div>
             <!-- {{/education}} -->
-        </div>
-    </section>
-    <!-- {{/if}} -->
+        </section>
+        <!-- {{/if}} -->
 
-    <!-- Experience -->
-    <!-- {{#if experience}} -->
-    <section class="resume-section">
-        <h3><i class="fa-solid fa-briefcase"></i> Experience</h3>
-        <div class="items-list">
+        <!-- {{#if experience}} -->
+        <section class="section">
+            <h3 class="sec-head">Internships & Work History</h3>
             <!-- {{#experience}} -->
-            <div class="resume-item">
-                <div class="item-header">
-                    <span class="item-title">{{job_title}}</span>
-                    <span class="item-date">{{start_date}} - {{end_date_or_present}}</span>
+            <div class="card-item">
+                <div class="c-head">
+                    <span class="title"><strong>{{job_title}}</strong> @ {{company_name}}</span>
+                    <span class="badge">{{start_date}} - {{end_date_or_present}}</span>
                 </div>
-                <div class="item-sub">{{company_name}} | {{employment_type}} | {{location}}</div>
-                <p class="item-details">{{job_description}}</p>
+                <div class="sub">{{location}}</div>
+                <p class="desc">{{job_description}}</p>
             </div>
             <!-- {{/experience}} -->
-        </div>
-    </section>
-    <!-- {{/if}} -->
+        </section>
+        <!-- {{/if}} -->
 
-    <!-- Projects -->
-    <!-- {{#if projects}} -->
-    <section class="resume-section">
-        <h3><i class="fa-solid fa-code"></i> Selected Projects</h3>
-        <div class="items-list">
+        <!-- {{#if projects}} -->
+        <section class="section">
+            <h3 class="sec-head">Academic & Personal Projects</h3>
             <!-- {{#projects}} -->
-            <div class="resume-item">
-                <div class="item-header">
-                    <span class="item-title">{{project_name}}</span>
-                    <span class="item-date">{{start_date}} - {{end_date}}</span>
+            <div class="card-item">
+                <div class="c-head">
+                    <span class="title"><strong>{{project_name}}</strong> ({{role}})</span>
+                    <span class="badge">{{start_date}} - {{end_date}}</span>
                 </div>
-                <div class="item-sub">Role: {{role}} | Tech Stack: {{technologies_used}}</div>
-                <p class="item-details">{{project_description}}</p>
-                <div class="links-row">
-                    <!-- {{#if github_url}} --><a href="{{github_url}}" target="_blank"><i class="fa-brands fa-github"></i> Repository</a><!-- {{/if}} -->
-                    <!-- {{#if live_project_url}} --><a href="{{live_project_url}}" target="_blank"><i class="fa-solid fa-globe"></i> Live Demo</a><!-- {{/if}} -->
-                </div>
+                <div class="tech">Tech: {{technologies_used}}</div>
+                <p class="desc">{{project_description}}</p>
             </div>
             <!-- {{/projects}} -->
-        </div>
-    </section>
-    <!-- {{/if}} -->
+        </section>
+        <!-- {{/if}} -->
 
-    <!-- Certifications -->
-    <!-- {{#if certifications}} -->
-    <section class="resume-section">
-        <h3><i class="fa-solid fa-certificate"></i> Certifications</h3>
-        <div class="items-list">
-            <!-- {{#certifications}} -->
-            <div class="resume-item">
-                <div class="item-header">
-                    <span class="item-title">{{certification_name}}</span>
-                    <span class="item-date">{{issue_date}}</span>
-                </div>
-                <div class="item-sub">{{issuing_organization}} <!-- {{#if credential_id}} -->| ID: {{credential_id}}<!-- {{/if}} --></div>
-                <p class="item-details">{{description}}</p>
+        <!-- {{#if skills}} -->
+        <section class="section">
+            <h3 class="sec-head">Skills & Competencies</h3>
+            <div class="skills-grid">
+                <!-- {{#skills}} -->
+                <span class="sk-pill">{{skill_name}} <em>({{skill_level}})</em></span>
+                <!-- {{/skills}} -->
             </div>
-            <!-- {{/certifications}} -->
-        </div>
-    </section>
-    <!-- {{/if}} -->
+        </section>
+        <!-- {{/if}} -->
+
+        <!-- {{#if certifications}} -->
+        <section class="section">
+            <h3 class="sec-head">Certifications</h3>
+            <div class="cert-grid">
+                <!-- {{#certifications}} -->
+                <div class="cert-box"><strong>{{certification_name}}</strong> — {{issuing_organization}}</div>
+                <!-- {{/certifications}} -->
+            </div>
+        </section>
+        <!-- {{/if}} -->
+    </div>
 </div>

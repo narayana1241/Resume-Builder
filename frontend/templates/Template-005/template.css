@@ -1,127 +1,19 @@
-/* Layout B CSS */
-.resume.layout-b {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    color: #27272a;
-    line-height: 1.45;
-    background: #ffffff;
-}
-
-.resume-header {
-    border-bottom: 2.5px solid #0d9488;
-    padding-bottom: 12px;
-    margin-bottom: 20px;
-}
-
-.resume-name {
-    font-size: 28px;
-    font-weight: 800;
-    color: #18181b;
-    letter-spacing: -0.03em;
-}
-
-.resume-title {
-    font-size: 15px;
-    font-weight: 600;
-    color: #0d9488;
-    letter-spacing: 0.05em;
-    margin-top: 2px;
-}
-
-.resume-contact {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-top: 8px;
-    font-size: 12px;
-    color: #52525b;
-}
-
-.resume-contact span i {
-    color: #0d9488;
-}
-
-.resume-contact a {
-    color: #0d9488;
-    text-decoration: underline;
-}
-
-.resume-section {
-    margin-bottom: 20px;
-}
-
-.resume-section h3 {
-    font-size: 14px;
-    font-weight: 700;
-    color: #18181b;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    border-bottom: 1px solid #e4e4e7;
-    padding-bottom: 4px;
-    margin-bottom: 8px;
-}
-
-.summary-text {
-    font-size: 13.5px;
-    color: #3f3f46;
-}
-
-.items-list {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.resume-item {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-}
-
-.item-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-}
-
-.item-title {
-    font-size: 14px;
-    color: #18181b;
-}
-
-.item-date {
-    font-size: 12px;
-    color: #71717a;
-    font-weight: 500;
-}
-
-.item-sub {
-    font-size: 12.5px;
-    color: #52525b;
-}
-
-.item-details {
-    font-size: 12.5px;
-    color: #3f3f46;
-    margin-top: 1px;
-}
-
-.item-link {
-    font-size: 12px;
-    color: #0d9488;
-}
-
-.item-link a {
-    color: #0d9488;
-}
-
-.skills-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 6px;
-}
-
-.skill-item {
-    font-size: 12.5px;
-    color: #3f3f46;
-}
-
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+.resume.tpl-005 { font-family: 'Plus Jakarta Sans', sans-serif; color: #0f172a; background: #ffffff; padding: 18mm 16mm; box-sizing: border-box; }
+.tpl-005 .header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 16px; }
+.tpl-005 .name { font-size: 30px; font-weight: 800; color: #0f766e; margin: 0; letter-spacing: -0.02em; }
+.tpl-005 .role { font-size: 14px; font-weight: 700; color: #0d9488; text-transform: uppercase; margin: 4px 0 0 0; letter-spacing: 0.05em; }
+.tpl-005 .h-right { font-size: 12px; text-align: right; color: #475569; line-height: 1.5; }
+.tpl-005 .h-right a { color: #0f766e; text-decoration: none; font-weight: 600; }
+.tpl-005 .thin-divider { height: 2px; background: linear-gradient(90deg, #0d9488, #99f6e4); margin-bottom: 18px; border-radius: 2px; }
+.tpl-005 .sec-title { font-size: 14px; font-weight: 700; color: #0f766e; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 1.5px solid #99f6e4; padding-bottom: 4px; margin: 16px 0 12px 0; }
+.tpl-005 .obj-text { font-size: 13px; line-height: 1.6; color: #334155; background: #f0fdf4; padding: 12px 16px; border-radius: 8px; border-left: 4px solid #0d9488; border: 1px solid #ccfbf1; border-left-width: 4px; }
+.tpl-005 .m-card { background: #fafafa; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px 14px; margin-bottom: 10px; }
+.tpl-005 .m-head { display: flex; justify-content: space-between; font-size: 13.5px; color: #0f172a; }
+.tpl-005 .m-date { font-size: 12px; color: #64748b; }
+.tpl-005 .m-sub { font-size: 12.5px; color: #0d9488; font-weight: 600; margin-top: 2px; }
+.tpl-005 .m-score { font-size: 12px; color: #15803d; font-weight: 700; margin-top: 4px; }
+.tpl-005 .m-desc { font-size: 12.5px; color: #334155; margin-top: 4px; line-height: 1.5; white-space: pre-line; }
+.tpl-005 .skills-box { display: flex; flex-wrap: wrap; gap: 8px; }
+.tpl-005 .sk-pill { background: #ccfbf1; color: #115e59; font-size: 12.5px; font-weight: 600; padding: 5px 12px; border-radius: 6px; }
+.tpl-005 .cert-item { font-size: 13px; color: #334155; margin-bottom: 6px; }

@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Builder | ATS Score</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/ats_score.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body data-page="ats">
+
+<div class="container">
+
+    <!-- Sidebar loads dynamically here -->
+    <div id="sidebar"></div>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+        
+        <!-- Header -->
+        <header class="saas-header animate-fade">
+            <div>
+                <h1>ATS Resume Score</h1>
+                <p>Analyze your resume against Applicant Tracking Systems (ATS)</p>
+            </div>
+            
+            <div class="profile">
+                <i class="fa-solid fa-user"></i>
+                Welcome, <strong id="username">Guest</strong>
+            </div>
+        </header>
+
+        <!-- Main ATS Dashboard Layout -->
+        <div class="ats-dashboard-grid animate-slide">
+            
+            <!-- Left Panel: Upload & Select Resume -->
+            <div class="ats-left-col">
+                <div class="saas-card upload-section-card">
+                    <div class="card-header-plain">
+                        <h3>Upload Resume</h3>
+                        <p>Upload your resume to check ATS score</p>
+                    </div>
+
+                    <div class="drop-zone" id="dropZone">
+                        <div class="drop-zone-content" id="dropZoneContent">
+                            <div class="upload-icon-box">
+                                <i class="fa-solid fa-cloud-arrow-up"></i>
+                            </div>
+                            <h3>Drag & drop your file here</h3>
+                            <p class="or-text">or</p>
+                            <label class="btn btn-primary btn-browse">
+                                Choose File
+                                <input type="file" id="fileInput" accept=".pdf,.docx" style="display: none;">
+                            </label>
+                            <p class="formats-text">PDF / DOCX only</p>
+                        </div>
+                        
+                        <!-- Upload Status View -->
+                        <div class="upload-status-view" id="uploadStatusView" style="display: none;">
+                            <i class="fa-solid fa-circle-check success-icon"></i>
+                            <h4 id="uploadedFileName">my_resume.pdf</h4>
+                            <p id="uploadedFileSize">1.2 MB</p>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar-fill" id="progressBarFill"></div>
+                            </div>
+                            <button type="button" class="btn btn-secondary btn-sm" id="btnRemoveFile">
+                                <i class="fa-solid fa-trash"></i> Remove
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="select-resume-container">
+                        <div class="or-separator">
+                            <span class="sep-line"></span>
+                            <span class="sep-text">OR</span>
+                            <span class="sep-line"></span>
+                        </div>
+                        
+                        <label for="resumeSelector" class="form-label">Select From My Resumes</label>
+                        <div class="select-wrapper">
+                            <select id="resumeSelector" class="form-select">
+                                <option value="">Select a saved resume...</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button type="button" class="btn btn-primary btn-analyze-ats" id="btnAnalyze">
+                        <i class="fa-solid fa-bolt"></i> Analyze ATS Score
+                    </button>
+                </div>
+            </div>
+
+            <!-- Right Panel: ATS Analysis Results -->
+            <div class="ats-right-col" id="analysisResultsBlock" style="opacity: 0.6; pointer-events: none;">
+                
+                <!-- Score Cards Top Row -->
+                <div class="score-summary-row">
+                    <!-- Circular Score Meter -->
+                    <div class="saas-card score-meter-card">
+                        <h3>Overall ATS Score</h3>
+                        <div class="meter-wrapper">
+                            <div class="circular-meter">
+                                <svg class="progress-svg" viewBox="0 0 100 100">
+                                    <defs>
+                                        <linearGradient id="scoreGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" stop-color="#ef4444" /> <!-- Red -->
+                                            <stop offset="50%" stop-color="#f59e0b" /> <!-- Yellow/Orange -->
+                                            <stop offset="100%" stop-color="#10b981" /> <!-- Green -->
+                                        </linearGradient>
+                                    </defs>
+                                    <circle class="progress-bg" cx="50" cy="50" r="40"></circle>
+                                    <circle class="progress-bar" id="scoreProgressBar" cx="50" cy="50" r="40" stroke="url(#scoreGradient)"></circle>
+                                </svg>
+                                <div class="score-text">
+                                    <span class="score-number" id="scoreVal">0</span>
+                                    <span class="score-max">/100</span>
+                                </div>
+                            </div>
+                            <div class="meter-assessment">
+                                <h2 id="scoreLevel">Pending</h2>
+                                <p id="scoreMessage">Please upload or select a resume and click Analyze.</p>
+                            </div>
+                        </div>
+                        <div class="overall-progress-line-container">
+                            <div class="progress-line-bar">
+                                <div class="progress-line-fill" id="overallProgressLineFill" style="width: 0%;"></div>
+                            </div>
+                            <div class="overall-progress-text-row">
+                                <span id="overallFeedbackText">Waiting for analysis...</span>
+                                <span class="percentile-badge" id="percentileBadge" style="display: none;">Top 20%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Score Breakdown Grid -->
+                    <div class="saas-card score-breakdown-card">
+                        <h3>Score Breakdown <i class="fa-solid fa-circle-info info-icon" title="Individual criteria scores"></i></h3>
+                        <div class="breakdown-grid" id="breakdownGrid">
+                            <!-- Items populated dynamically -->
+                            <div class="breakdown-item">
+                                <div class="breakdown-icon bg-indigo"><i class="fa-solid fa-address-book"></i></div>
+                                <div class="breakdown-info">
+                                    <span class="breakdown-label">Contact Information</span>
+                                    <span class="breakdown-value" id="breakdown-contact">0%</span>
+                                </div>
+                            </div>
+                            <div class="breakdown-item">
+                                <div class="breakdown-icon bg-emerald"><i class="fa-solid fa-magnifying-glass"></i></div>
+                                <div class="breakdown-info">
+                                    <span class="breakdown-label">Keywords Match</span>
+                                    <span class="breakdown-value" id="breakdown-keywords">0%</span>
+                                </div>
+                            </div>
+                            <div class="breakdown-item">
+                                <div class="breakdown-icon bg-blue"><i class="fa-solid fa-code"></i></div>
+                                <div class="breakdown-info">
+                                    <span class="breakdown-label">Skills Section</span>
+                                    <span class="breakdown-value" id="breakdown-skills">0%</span>
+                                </div>
+                            </div>
+                            <div class="breakdown-item">
+                                <div class="breakdown-icon bg-teal"><i class="fa-solid fa-briefcase"></i></div>
+                                <div class="breakdown-info">
+                                    <span class="breakdown-label">Experience</span>
+                                    <span class="breakdown-value" id="breakdown-experience">0%</span>
+                                </div>
+                            </div>
+                            <div class="breakdown-item">
+                                <div class="breakdown-icon bg-orange"><i class="fa-solid fa-graduation-cap"></i></div>
+                                <div class="breakdown-info">
+                                    <span class="breakdown-label">Education</span>
+                                    <span class="breakdown-value" id="breakdown-education">0%</span>
+                                </div>
+                            </div>
+                            <div class="breakdown-item">
+                                <div class="breakdown-icon bg-amber"><i class="fa-solid fa-paint-roller"></i></div>
+                                <div class="breakdown-info">
+                                    <span class="breakdown-label">Formatting</span>
+                                    <span class="breakdown-value" id="breakdown-formatting">0%</span>
+                                </div>
+                            </div>
+                            <div class="breakdown-item">
+                                <div class="breakdown-icon bg-purple"><i class="fa-solid fa-font"></i></div>
+                                <div class="breakdown-info">
+                                    <span class="breakdown-label">Grammar</span>
+                                    <span class="breakdown-value" id="breakdown-grammar">95%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Secondary Results Grid -->
+                <div class="results-secondary-grid">
+                    
+                    <!-- Recommended Keywords -->
+                    <div class="saas-card keywords-card">
+                        <h3>Recommended Keywords <i class="fa-solid fa-circle-info info-icon" title="Keywords recommended for your target job role"></i></h3>
+                        <div class="keyword-tags-container" id="keywordsContainer">
+                            <p class="placeholder-text">Run analysis to see keywords.</p>
+                        </div>
+                    </div>
+
+                    <!-- Suggestions Checklist -->
+                    <div class="saas-card suggestions-card">
+                        <h3>Suggestions</h3>
+                        <div class="suggestions-list" id="suggestionsContainer">
+                            <p class="placeholder-text">Run analysis to see suggestions.</p>
+                        </div>
+                    </div>
+
+                    <!-- Skills Match -->
+                    <div class="saas-card skills-match-card">
+                        <h3>Skills Match <i class="fa-solid fa-circle-info" title="Matches based on skills compared to target profile"></i></h3>
+                        <div class="skills-match-wrapper">
+                            <div class="skills-circle-container">
+                                <div class="skills-match-circle">
+                                    <svg class="skills-progress-svg" viewBox="0 0 100 100">
+                                        <circle class="skills-progress-bg" cx="50" cy="50" r="40"></circle>
+                                        <circle class="skills-progress-bar" id="skillsMatchProgress" cx="50" cy="50" r="40"></circle>
+                                    </svg>
+                                    <div class="skills-match-text">
+                                        <span class="skills-match-percent" id="skillsMatchVal">0%</span>
+                                        <span class="skills-match-lbl">Skills Match</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="skills-details-container">
+                                <div class="skills-group">
+                                    <span class="skills-group-title">Skills found</span>
+                                    <div class="skills-chips-list" id="skillsFoundChips">
+                                        <!-- Chips -->
+                                    </div>
+                                </div>
+                                <div class="skills-group">
+                                    <span class="skills-group-title">Missing Skills</span>
+                                    <div class="skills-chips-list" id="skillsMissingChips">
+                                        <!-- Chips -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Resume Sections Status -->
+                    <div class="saas-card sections-status-card">
+                        <h3>Resume Sections <i class="fa-solid fa-circle-info" title="Evaluation of presence of sections in your resume"></i></h3>
+                        <div class="sections-status-list" id="sectionsStatusContainer">
+                            <p class="placeholder-text">Run analysis to see section status.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Footer Actions panel -->
+                <div class="ats-action-footer">
+                    <button class="btn btn-outline" id="btnDownloadReport">
+                        <i class="fa-solid fa-download"></i> Download ATS Report
+                    </button>
+                    <a href="editor.html" class="btn btn-secondary" id="btnImproveResume">
+                        <i class="fa-solid fa-pen-nib"></i> Improve Resume
+                    </a>
+                    <button class="btn btn-outline" id="btnAnalyzeAgain">
+                        <i class="fa-solid fa-rotate"></i> Analyze Again
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+<!-- Loading overlay -->
+<div class="loading-overlay" id="loadingOverlay" style="display: none;">
+    <div class="spinner-container">
+        <div class="spinner"></div>
+        <h3>Analyzing Resume...</h3>
+        <p>PostgreSQL is running calculations and matching keywords</p>
+    </div>
+</div>
+
+<!-- Scripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
+<script src="js/common.js"></script>
+<script src="js/ats_score.js"></script>
+</body>
+</html>

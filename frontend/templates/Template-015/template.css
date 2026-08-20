@@ -1,153 +1,18 @@
-/* Layout C CSS */
-.resume.layout-c {
-    font-family: 'Inter', -apple-system, sans-serif;
-    color: #1e293b;
-    line-height: 1.5;
-    background: #ffffff;
-}
-
-.resume-header {
-    border-left: 6px solid #b45309;
-    padding-left: 20px;
-    margin-bottom: 24px;
-}
-
-.resume-name {
-    font-size: 30px;
-    font-weight: 800;
-    color: #0f172a;
-    letter-spacing: -0.025em;
-}
-
-.resume-title {
-    font-size: 16px;
-    font-weight: 600;
-    color: #b45309;
-    margin-top: 2px;
-}
-
-.resume-contact {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 14px;
-    margin-top: 10px;
-    font-size: 12.5px;
-    color: #475569;
-}
-
-.resume-contact span i {
-    color: #b45309;
-}
-
-.resume-contact a {
-    color: #b45309;
-    text-decoration: none;
-}
-
-.resume-section {
-    margin-bottom: 24px;
-}
-
-.resume-section h3 {
-    font-size: 15px;
-    font-weight: 700;
-    color: #0f172a;
-    margin-bottom: 12px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    border-bottom: 2px solid #e2e8f0;
-    padding-bottom: 6px;
-}
-
-.resume-section h3 i {
-    color: #b45309;
-}
-
-.summary-text {
-    font-size: 13.5px;
-    color: #334155;
-    text-align: justify;
-}
-
-.items-list {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-}
-
-.resume-item {
-    padding-left: 14px;
-    border-left: 2px solid #e2e8f0;
-}
-
-.item-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-}
-
-.item-title {
-    font-size: 14.5px;
-    font-weight: 700;
-    color: #0f172a;
-}
-
-.item-date {
-    font-size: 12.5px;
-    color: #64748b;
-    font-weight: 500;
-}
-
-.item-sub {
-    font-size: 13px;
-    color: #475569;
-    margin-top: 2px;
-}
-
-.item-details {
-    font-size: 13px;
-    color: #334155;
-    margin-top: 4px;
-}
-
-.links-row {
-    display: flex;
-    gap: 12px;
-    margin-top: 4px;
-}
-
-.links-row a {
-    font-size: 12px;
-    color: #b45309;
-    text-decoration: none;
-    font-weight: 600;
-}
-
-.skills-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
-}
-
-.skill-card {
-    background: #f8fafc;
-    border: 1px solid #f1f5f9;
-    padding: 6px 12px;
-    border-radius: 6px;
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-}
-
-.skill-name {
-    font-size: 13px;
-    font-weight: 600;
-    color: #0f172a;
-}
-
-.skill-level {
-    font-size: 11px;
-    color: #64748b;
-}
-
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+.resume.tpl-015 { font-family: 'Plus Jakarta Sans', sans-serif; color: #0f172a; background: #ffffff; padding: 18mm 16mm; box-sizing: border-box; }
+.tpl-015 .header { border-bottom: 3px solid #ea580c; padding-bottom: 12px; margin-bottom: 18px; text-align: center; }
+.tpl-015 .name { font-size: 30px; font-weight: 800; color: #c2410c; margin: 0; letter-spacing: -0.01em; }
+.tpl-015 .title { font-size: 14px; font-weight: 700; color: #ea580c; text-transform: uppercase; letter-spacing: 0.06em; margin: 4px 0 10px 0; }
+.tpl-015 .contacts { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; font-size: 12.5px; color: #475569; }
+.tpl-015 .contacts a { color: #ea580c; text-decoration: none; font-weight: 600; }
+.tpl-015 .sec-h { font-size: 14px; font-weight: 700; color: #c2410c; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 1.5px solid #ffedd5; padding-bottom: 4px; margin: 16px 0 12px 0; }
+.tpl-015 .summary { font-size: 13px; line-height: 1.6; color: #334155; background: #fff7ed; padding: 12px; border-radius: 8px; border-left: 4px solid #ea580c; border: 1px solid #ffedd5; border-left-width: 4px; }
+.tpl-015 .card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px 14px; margin-bottom: 10px; }
+.tpl-015 .p-card { border-left: 4px solid #ea580c; }
+.tpl-015 .c-head { font-size: 13.5px; color: #0f172a; display: flex; justify-content: space-between; }
+.tpl-015 .c-date { font-size: 12px; color: #64748b; }
+.tpl-015 .c-sub { font-size: 12.5px; color: #ea580c; font-weight: 600; margin-top: 2px; }
+.tpl-015 .c-gpa { font-size: 12px; color: #166534; font-weight: 700; margin-top: 3px; }
+.tpl-015 .desc { font-size: 12.5px; color: #334155; margin-top: 4px; line-height: 1.5; white-space: pre-line; }
+.tpl-015 .skills { display: flex; flex-wrap: wrap; gap: 8px; }
+.tpl-015 .chip { background: #ffedd5; color: #9a3412; font-size: 12.5px; font-weight: 600; padding: 5px 12px; border-radius: 6px; }

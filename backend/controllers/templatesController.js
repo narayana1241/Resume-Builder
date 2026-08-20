@@ -20,9 +20,19 @@ const getAllResumeTemplates = async (req, res) => {
 
         await client.query("COMMIT");
 
+        const rowData = result.rows[0] || {};
+        let templatesArray = [];
+        if (rowData.var_result_json && Array.isArray(rowData.var_result_json.data)) {
+            templatesArray = rowData.var_result_json.data;
+        } else if (rowData.var_result_json) {
+            templatesArray = rowData.var_result_json;
+        } else {
+            templatesArray = result.rows;
+        }
+
         return res.status(200).json({
             success: true,
-            data: result.rows[0].var_result_json || result.rows[0].json_build_object || result.rows[0]
+            data: templatesArray
         });
 
     } catch (error) {

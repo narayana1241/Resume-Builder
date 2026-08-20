@@ -7,30 +7,33 @@ const getResumePreview = async (req, res) => {
     try {
 
         const { resume_id } = req.params;
-
-         const { user_id } = req.query;
+        let userId = req.query.user_id;
+        if (!userId || userId === "undefined" || userId === "null") {
+            userId = 1;
+        }
 
         await client.query("BEGIN");
 
         const cursorResult = await client.query(
-
             "SELECT * FROM public.get_all_preview_data($1,$2)",
-
-            [user_id, resume_id]
-
+            [userId, resume_id]
         );
 
         const cursorName = cursorResult.rows[0].p_refcur;
-
-        const result = await client.query(
-
-            `FETCH ALL IN "${cursorName}"`
-
-        );
+        const result = await client.query(`FETCH ALL IN "${cursorName}"`);
 
         await client.query("COMMIT");
 
-       res.json(result.rows[0].var_result_json);
+        let previewObj = null;
+        if (result.rows.length > 0 && result.rows[0].var_result_json) {
+            const rawJson = result.rows[0].var_result_json;
+            previewObj = Array.isArray(rawJson.data) ? rawJson.data : rawJson;
+        }
+
+        res.status(200).json({
+            success: true,
+            data: previewObj
+        });
 
     }
     catch (err) {

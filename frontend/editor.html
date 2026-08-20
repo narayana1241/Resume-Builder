@@ -27,7 +27,11 @@
         <h2>Resume Editor Workspace</h2>
     </div>
 
-    <div class="navbar-right">
+    <div class="navbar-right" style="display:flex; align-items:center; gap:12px;">
+        <span id="draftStatusBadge" class="draft-badge" style="font-size:12px; color:#f59e0b; font-weight:600;"><i class="fa-solid fa-clock"></i> Unsaved Session Draft</span>
+        <button id="btnSaveResume" class="btn btn-success btn-sm" style="background:#10b981; color:#fff; border:none; padding:8px 16px; font-weight:700; border-radius:6px; cursor:pointer;">
+            <i class="fa-solid fa-cloud-arrow-up"></i> Save Resume
+        </button>
         <button id="btnDownloadPDF" class="btn btn-primary btn-sm">
             <i class="fa-solid fa-download"></i> Download PDF
         </button>
@@ -65,6 +69,10 @@
             <div class="step-nav-item" data-step="certifications">
                 <span class="step-nav-icon"><i class="fa-solid fa-certificate"></i></span>
                 <span class="step-nav-text">Certs</span>
+            </div>
+            <div class="step-nav-item" data-step="custom">
+                <span class="step-nav-icon"><i class="fa-solid fa-layer-group"></i></span>
+                <span class="step-nav-text">Custom</span>
             </div>
         </div>
 
@@ -446,6 +454,46 @@
                                 </tr>
                             </thead>
                             <tbody id="certificationsListBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- STEP 7: Custom / Additional Sections Form -->
+            <div class="form-step-content" id="step-custom" style="display: none;">
+                <h3 class="step-title">Custom & Additional Sections</h3>
+                <p class="step-subtitle">Review or add extra sections like Publications, Volunteer Work, Awards, Patents, or Hobbies.</p>
+                
+                <form id="customSectionForm" style="margin-bottom: 20px;">
+                    <div class="form-grid">
+                        <div class="form-group span-full">
+                            <label for="custom_section_title">Section Title <span>*</span></label>
+                            <input type="text" id="custom_section_title" class="form-input" placeholder="e.g. Publications, Volunteer Work, Awards" required>
+                        </div>
+                        <div class="form-group span-full">
+                            <label for="custom_section_item">Item Description <span>*</span></label>
+                            <textarea id="custom_section_item" class="form-input" rows="2" placeholder="e.g. High-Performance Query Tuning in PostgreSQL Systems (2024)" required></textarea>
+                        </div>
+                    </div>
+                    <div class="form-actions-row">
+                        <button type="submit" class="btn btn-primary btn-sm">
+                            <i class="fa-solid fa-plus"></i> Add Custom Item
+                        </button>
+                    </div>
+                </form>
+
+                <div class="list-section">
+                    <h4>Extracted Custom Sections</h4>
+                    <div class="saas-table-container">
+                        <table class="saas-table">
+                            <thead>
+                                <tr>
+                                    <th>Section Title</th>
+                                    <th>Data / Items</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="customSectionsListBody"></tbody>
                         </table>
                     </div>
                 </div>

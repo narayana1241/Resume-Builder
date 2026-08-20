@@ -1,6 +1,6 @@
 var API_BASE_URL = window.location.port === "5000"
     ? ""
-    : (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1" ? "http://localhost:5000" : "");
+    : (window.location.protocol === "file:" || window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1" ? "http://localhost:5000" : "");
 
 // ==========================================
 // Resume Preview Workspace - Split View Controller
@@ -190,10 +190,12 @@ document.getElementById("btnDownload").addEventListener("click", async function(
         filename: `${resumeName}.pdf`,
         image: {
             type: "jpeg",
-            quality: 1
+            quality: 0.98
         },
         html2canvas: {
-            scale: 2
+            scale: 2,
+            useCORS: true,
+            logging: false
         },
         jsPDF: {
             unit: "in",
@@ -201,7 +203,24 @@ document.getElementById("btnDownload").addEventListener("click", async function(
             orientation: "portrait"
         }
     };
-    html2pdf().set(options).from(resume).save();
+
+    // Temporarily reset CSS scale transform for un-distorted PDF export
+    const originalTransform = resume.style.transform;
+    const originalWidth = resume.style.width;
+    resume.style.transform = "none";
+    resume.style.width = "794px";
+
+    try {
+        await html2pdf().set(options).from(resume).save();
+    } catch (pdfErr) {
+        console.error("PDF generation error:", pdfErr);
+        alert("Failed to generate PDF. Please try again.");
+    } finally {
+        // Restore scale transform
+        resume.style.transform = originalTransform;
+        resume.style.width = originalWidth;
+        adjustResumeScale();
+    }
 });
 
 // Auto-download helper trigger
@@ -225,8 +244,8 @@ function adjustResumeScale() {
 
     const viewportWidth = viewport.clientWidth;
     const baseWidth = 794; // 210mm in pixels at 96 DPI
-    const padding = 20; // 10px padding on each side
-    const availableWidth = viewportWidth - padding;
+    const padding = 24;
+    const availableWidth = Math.max(300, viewportWidth - padding);
 
     if (availableWidth < baseWidth) {
         const scale = availableWidth / baseWidth;
@@ -235,13 +254,13 @@ function adjustResumeScale() {
         container.style.width = `${baseWidth}px`;
         container.style.display = "block";
         
-        // Scale the parent .preview-area size wrapper to reclaim scaled blank space
         const previewArea = document.querySelector(".preview-area");
         if (previewArea) {
-            const containerHeight = container.offsetHeight || container.scrollHeight || 1123;
-            previewArea.style.height = `${containerHeight * scale}px`;
+            const containerHeight = Math.max(container.scrollHeight, container.offsetHeight, 1123);
+            previewArea.style.minHeight = `${containerHeight * scale + 40}px`;
+            previewArea.style.height = "auto";
             previewArea.style.width = `${availableWidth}px`;
-            previewArea.style.overflow = "hidden";
+            previewArea.style.overflow = "visible";
         }
     } else {
         container.style.transform = "none";
@@ -250,6 +269,7 @@ function adjustResumeScale() {
         const previewArea = document.querySelector(".preview-area");
         if (previewArea) {
             previewArea.style.height = "auto";
+            previewArea.style.minHeight = "auto";
             previewArea.style.width = "auto";
             previewArea.style.overflow = "visible";
         }

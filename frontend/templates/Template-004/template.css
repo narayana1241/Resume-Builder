@@ -1,141 +1,22 @@
-/* Layout A CSS */
-.resume.layout-a {
-    font-family: 'Georgia', Times, serif;
-    color: #1e293b;
-    line-height: 1.5;
-    background: #ffffff;
-}
-
-.resume-header {
-    text-align: center;
-    border-bottom: 2px solid #1e3a8a;
-    padding-bottom: 16px;
-    margin-bottom: 24px;
-}
-
-.resume-name {
-    font-size: 32px;
-    font-weight: 700;
-    color: #0f172a;
-    letter-spacing: -0.02em;
-}
-
-.resume-title {
-    font-size: 16px;
-    font-weight: 500;
-    color: #1e3a8a;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin-top: 4px;
-}
-
-.resume-contact {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 16px;
-    margin-top: 12px;
-    font-size: 13px;
-    color: #64748b;
-}
-
-.resume-contact span i {
-    color: #1e3a8a;
-}
-
-.resume-contact a {
-    color: #1e3a8a;
-    text-decoration: none;
-}
-
-.resume-section {
-    margin-bottom: 24px;
-}
-
-.resume-section h3 {
-    font-size: 16px;
-    font-weight: 700;
-    color: #0f172a;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin-bottom: 6px;
-}
-
-.section-divider {
-    height: 1.5px;
-    background: #cbd5e1;
-    margin-bottom: 12px;
-}
-
-.summary-text {
-    font-size: 14px;
-    color: #334155;
-    text-align: justify;
-}
-
-.items-list {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
-
-.resume-item {
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-}
-
-.item-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-}
-
-.item-title {
-    font-size: 15px;
-    color: #0f172a;
-}
-
-.item-date {
-    font-size: 13px;
-    color: #64748b;
-    font-weight: 600;
-}
-
-.item-sub {
-    font-size: 13.5px;
-    color: #475569;
-}
-
-.item-details {
-    font-size: 13.5px;
-    color: #334155;
-    margin-top: 2px;
-}
-
-.item-link {
-    font-size: 12px;
-    color: #1e3a8a;
-}
-
-.item-link a {
-    color: #1e3a8a;
-    text-decoration: none;
-}
-
-.skills-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-}
-
-.skill-tag {
-    background: #f1f5f9;
-    color: #334155;
-    padding: 4px 10px;
-    border-radius: 4px;
-    font-size: 13px;
-    font-weight: 500;
-    border: 1px solid #e2e8f0;
-}
-
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+.resume.tpl-004 { font-family: 'Plus Jakarta Sans', sans-serif; display: flex; color: #1e293b; background: #ffffff; padding: 0; box-sizing: border-box; min-height: 297mm; }
+.tpl-004 .sidebar { width: 34%; background: #0f172a; color: #ffffff; padding: 28px 20px; box-sizing: border-box; flex-shrink: 0; }
+.tpl-004 .name { font-size: 26px; font-weight: 800; color: #ffffff; margin: 0 0 4px 0; letter-spacing: -0.01em; }
+.tpl-004 .target-title { font-size: 13px; font-weight: 700; color: #38bdf8; text-transform: uppercase; letter-spacing: 0.06em; margin: 0 0 20px 0; }
+.tpl-004 .sb-sec { margin-bottom: 22px; }
+.tpl-004 .sb-head { font-size: 12.5px; font-weight: 700; text-transform: uppercase; color: #38bdf8; border-bottom: 1px solid #334155; padding-bottom: 6px; margin-bottom: 10px; letter-spacing: 0.05em; }
+.tpl-004 .sb-item { font-size: 12px; color: #cbd5e1; margin-bottom: 8px; word-break: break-word; line-height: 1.5; }
+.tpl-004 .sb-item a { color: #38bdf8; text-decoration: none; font-weight: 600; }
+.tpl-004 .sb-skills { display: flex; flex-wrap: wrap; gap: 6px; }
+.tpl-004 .sb-chip { background: #1e293b; color: #e2e8f0; font-size: 11.5px; padding: 4px 10px; border-radius: 6px; border: 1px solid #334155; }
+.tpl-004 .sb-cert { font-size: 12px; color: #e2e8f0; margin-bottom: 8px; line-height: 1.4; }
+.tpl-004 .sb-cert small { color: #94a3b8; }
+.tpl-004 .main-content { width: 66%; padding: 28px 24px; box-sizing: border-box; flex-grow: 1; }
+.tpl-004 .sec-h { font-size: 14px; font-weight: 700; color: #0f172a; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 2px solid #0f172a; padding-bottom: 6px; margin: 16px 0 12px 0; }
+.tpl-004 .summary { font-size: 13px; line-height: 1.6; color: #334155; background: #f8fafc; padding: 12px; border-radius: 6px; border-left: 4px solid #0f172a; border: 1px solid #e2e8f0; border-left-width: 4px; }
+.tpl-004 .block { margin-bottom: 12px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px 14px; }
+.tpl-004 .b-head { font-size: 13.5px; color: #0f172a; display: flex; justify-content: space-between; }
+.tpl-004 .b-date { font-size: 12px; color: #64748b; }
+.tpl-004 .b-sub { font-size: 12.5px; color: #0284c7; font-weight: 600; margin-top: 3px; }
+.tpl-004 .b-score { font-size: 12px; color: #166534; font-weight: 700; margin-top: 4px; }
+.tpl-004 .b-desc { font-size: 12.5px; color: #334155; margin-top: 6px; line-height: 1.5; white-space: pre-line; }

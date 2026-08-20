@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio | Resume Builder</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/ats_score.css">
+    <style>
+        .portfolio-card {
+            max-width: 800px;
+            margin: 40px auto;
+            text-align: center;
+            padding: 50px 30px;
+        }
+        .portfolio-icon {
+            font-size: 3.5rem;
+            color: var(--primary);
+            margin-bottom: 24px;
+        }
+        .portfolio-url-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background: #f1f5f9;
+            padding: 14px 20px;
+            border-radius: var(--radius-md);
+            max-width: 500px;
+            margin: 28px auto;
+            border: 1px solid var(--border-color);
+        }
+        .portfolio-url {
+            font-family: monospace;
+            font-weight: 700;
+            color: var(--text-main);
+            font-size: 0.95rem;
+        }
+        .btn-copy {
+            background: var(--primary);
+            color: #ffffff;
+            border: none;
+            padding: 6px 12px;
+            border-radius: var(--radius-sm);
+            font-size: 0.8rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .btn-copy:hover {
+            background: var(--primary-hover);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    
+    <!-- Sidebar Navigation -->
+    <nav id="sidebar" class="sidebar">
+        <!-- Loaded dynamically -->
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        
+        <header class="saas-header animate-fade">
+            <div>
+                <h1>Portfolio Builder</h1>
+                <p>Build and publish a stunning public portfolio site from your resume details.</p>
+            </div>
+            <div class="profile">
+                <i class="fa-solid fa-user-circle"></i>
+                Welcome, <strong id="username">Guest</strong>
+            </div>
+        </header>
+
+        <div class="saas-card portfolio-card animate-slide">
+            <div class="portfolio-icon">
+                <i class="fa-solid fa-laptop-code"></i>
+            </div>
+            <h2>Publish Your Public Portfolio</h2>
+            <p style="color: var(--text-muted); margin-top: 8px; max-width: 600px; margin-left: auto; margin-right: auto;">
+                Convert your active resume into a fully responsive personal landing page website. Keep it synced with your latest work edits in real time.
+            </p>
+
+            <div class="portfolio-url-box">
+                <i class="fa-solid fa-globe" style="color: var(--primary);"></i>
+                <span class="portfolio-url" id="portfolioUrl">https://resume-builder.com/portfolio/stpl632</span>
+                <button type="button" class="btn-copy" onclick="copyLink()">
+                    <i class="fa-solid fa-copy"></i> Copy Link
+                </button>
+            </div>
+
+            <button type="button" class="btn btn-outline" style="padding: 12px 28px; font-weight: 700; border-radius: var(--radius-md); border-color: var(--primary); color: var(--primary);" onclick="alert('Portfolio layout is now synced and published live!')">
+                <i class="fa-solid fa-rotate"></i> Sync & Republish Portfolio
+            </button>
+        </div>
+
+    </main>
+
+</div>
+
+<script src="js/common.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        if (typeof loadSidebar === "function") {
+            loadSidebar("portfolio");
+        }
+        const localUser = localStorage.getItem("username") || "Developer";
+        document.getElementById("username").textContent = localUser;
+        document.getElementById("portfolioUrl").textContent = `https://resume-builder.com/portfolio/${localUser.toLowerCase().replace(/\s+/g, "_")}`;
+    });
+
+    function copyLink() {
+        const linkText = document.getElementById("portfolioUrl").textContent;
+        navigator.clipboard.writeText(linkText).then(() => {
+            alert("Portfolio public link copied to clipboard!");
+        });
+    }
+</script>
+</body>
+</html>

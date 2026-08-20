@@ -18,6 +18,8 @@ const projectsRoutes = require("./routes/projectsRoutes");
 const certificationsRoutes = require("./routes/certificationsRoutes");
 const resumepreviewRoutes = require("./routes/resumepreviewRoutes");
 const TemplatesRoutes = require("./routes/templatesRoutes");
+const atsRoutes = require("./routes/atsRoutes");
+const jobMatchRoutes = require("./routes/jobMatchRoutes");
 
 const app = express();
 
@@ -72,6 +74,8 @@ app.use("/api/projects", projectsRoutes);
 app.use("/api/certifications", certificationsRoutes);
 app.use("/api/resume/preview", resumepreviewRoutes);
 app.use("/api/templates", TemplatesRoutes);
+app.use("/api/ats", atsRoutes);
+app.use("/api/job-match", jobMatchRoutes);
 
 app.get("/", async (req, res, next) => {
     try {

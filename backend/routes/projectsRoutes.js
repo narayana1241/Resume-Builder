@@ -4,7 +4,8 @@ const router = express.Router();
 
 const {
     saveProjects,
-    getProjects
+    getProjects,
+    deleteProjects
 } = require("../controllers/projectsController");
 
 // =============================
@@ -18,5 +19,11 @@ router.post("/save", saveProjects);
 // =============================
 
 router.get("/list/:resume_id", getProjects);
+
+// =============================
+// Delete Project
+// =============================
+
+router.delete("/delete/:id", deleteProjects);
 
 module.exports = router;

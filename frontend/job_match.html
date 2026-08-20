@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Match Analyzer | Resume Builder</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/ats_score.css">
+    <link rel="stylesheet" href="css/job_match.css">
+</head>
+<body>
+
+<div class="container">
+    
+    <!-- Sidebar Navigation (Loaded dynamically) -->
+    <nav id="sidebar" class="sidebar">
+        <!-- Will be populated by loadSidebar() in common.js -->
+    </nav>
+
+    <!-- Main Workspace Area -->
+    <main class="main-content">
+        
+        <!-- Header -->
+        <header class="saas-header animate-fade">
+            <div>
+                <h1>Job Match Analyzer</h1>
+                <p>Analyze how well your resume matches a job description before applying.</p>
+            </div>
+            <div class="profile">
+                <i class="fa-solid fa-user-circle"></i>
+                Welcome, <strong id="username">Guest</strong>
+            </div>
+        </header>
+
+        <!-- Main Job Match Layout -->
+        <div class="job-match-grid animate-slide">
+            
+            <!-- Left Column: Input Selection -->
+            <div class="match-left-col">
+                
+                <!-- Select Resume Card -->
+                <div class="saas-card resume-selector-card">
+                    <div class="card-header-plain">
+                        <h3><i class="fa-regular fa-file-lines"></i> Select Resume</h3>
+                        <p>Choose the resume you want to analyze against the job description</p>
+                    </div>
+                    <div class="select-wrapper">
+                        <select id="resumeSelect" class="form-select">
+                            <option value="">Loading resumes...</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Job Input Card -->
+                <div class="saas-card job-input-card">
+                    <div class="card-header-plain">
+                        <h3><i class="fa-solid fa-briefcase"></i> Job Details</h3>
+                        <p>Provide the job specifications to calculate match score</p>
+                    </div>
+
+                    <!-- Tabs Header -->
+                    <div class="tab-header-row">
+                        <button type="button" class="tab-btn active" data-tab="tab-text">
+                            <i class="fa-solid fa-align-left"></i> Paste Job Description
+                        </button>
+                        <button type="button" class="tab-btn" data-tab="tab-url">
+                            <i class="fa-solid fa-link"></i> Job URL
+                        </button>
+                    </div>
+
+                    <!-- Tab Content Panel -->
+                    <div class="tab-content-container">
+                        <!-- Tab 1: Paste Text -->
+                        <div class="tab-panel active" id="tab-text">
+                            <textarea id="jobDescriptionText" class="form-textarea" placeholder="Paste complete job description here..." maxlength="10000"></textarea>
+                            <div class="textarea-footer">
+                                <span id="charCount">0 / 10000 characters</span>
+                            </div>
+                        </div>
+
+                        <!-- Tab 2: URL -->
+                        <div class="tab-panel" id="tab-url">
+                            <div class="url-input-group">
+                                <input type="url" id="jobUrlInput" class="form-input" placeholder="https://careers.company.com/job/12345">
+                                <button type="button" class="btn btn-outline" id="btnFetchJob">
+                                    <i class="fa-solid fa-circle-down"></i> Fetch Job Details
+                                </button>
+                            </div>
+                            <small class="help-text">We'll attempt to extract the description dynamically. Permitted domains only.</small>
+                        </div>
+                    </div>
+
+                    <!-- Meta specifications -->
+                    <div class="meta-row">
+                        <div class="input-field">
+                            <label for="jobTitleInput">Job Title (Optional)</label>
+                            <input type="text" id="jobTitleInput" class="form-input" placeholder="e.g. Software Engineer">
+                        </div>
+                        <div class="input-field">
+                            <label for="companyInput">Company Name (Optional)</label>
+                            <input type="text" id="companyInput" class="form-input" placeholder="e.g. Google">
+                        </div>
+                    </div>
+
+                    <!-- Action Trigger -->
+                    <button type="button" class="btn-analyze-match" id="btnAnalyzeMatch">
+                        <i class="fa-solid fa-bolt"></i> Analyze Match
+                    </button>
+                </div>
+
+            </div>
+
+            <!-- Right Column: Results Dash -->
+            <div class="match-right-col" id="matchResultsBlock" style="opacity: 0.6; pointer-events: none;">
+                
+                <!-- Top Summary Row -->
+                <div class="summary-score-row">
+                    
+                    <!-- Overall Score Circle Card -->
+                    <div class="saas-card overall-match-card">
+                        <h3>Overall Match Score</h3>
+                        <div class="radial-meter-wrapper">
+                            <div class="circular-meter large">
+                                <svg class="progress-svg" viewBox="0 0 100 100">
+                                    <defs>
+                                        <linearGradient id="matchGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" stop-color="#ef4444" /> <!-- Red -->
+                                            <stop offset="50%" stop-color="#f59e0b" /> <!-- Yellow/Orange -->
+                                            <stop offset="100%" stop-color="#10b981" /> <!-- Green -->
+                                        </linearGradient>
+                                    </defs>
+                                    <circle class="progress-bg" cx="50" cy="50" r="40"></circle>
+                                    <circle class="progress-bar" id="matchProgressBar" cx="50" cy="50" r="40" stroke="url(#matchGradient)"></circle>
+                                </svg>
+                                <div class="score-text">
+                                    <span class="score-number" id="matchScoreVal">0%</span>
+                                    <span class="score-max">Match</span>
+                                </div>
+                            </div>
+                            <div class="probability-box">
+                                <span class="prob-label">Shortlisting Probability</span>
+                                <h2 id="probabilityText">Pending</h2>
+                                <span class="probability-badge" id="probabilityBadge">Medium</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Match Breakdown Card -->
+                    <div class="saas-card match-breakdown-card">
+                        <h3>Match Breakdown <i class="fa-solid fa-circle-info info-icon" title="Percentage match for individual parameters"></i></h3>
+                        <div class="breakdown-list-wrapper">
+                            
+                            <div class="breakdown-progress-row">
+                                <div class="progress-label-row">
+                                    <span>Skills Match</span>
+                                    <strong id="bar-skills-val">0%</strong>
+                                </div>
+                                <div class="progress-track"><div class="progress-fill bg-indigo" id="bar-skills" style="width: 0%;"></div></div>
+                            </div>
+
+                            <div class="breakdown-progress-row">
+                                <div class="progress-label-row">
+                                    <span>Experience Match</span>
+                                    <strong id="bar-experience-val">0%</strong>
+                                </div>
+                                <div class="progress-track"><div class="progress-fill bg-emerald" id="bar-experience" style="width: 0%;"></div></div>
+                            </div>
+
+                            <div class="breakdown-progress-row">
+                                <div class="progress-label-row">
+                                    <span>Education Match</span>
+                                    <strong id="bar-education-val">0%</strong>
+                                </div>
+                                <div class="progress-track"><div class="progress-fill bg-blue" id="bar-education" style="width: 0%;"></div></div>
+                            </div>
+
+                            <div class="breakdown-progress-row">
+                                <div class="progress-label-row">
+                                    <span>Keyword Match</span>
+                                    <strong id="bar-keyword-val">0%</strong>
+                                </div>
+                                <div class="progress-track"><div class="progress-fill bg-purple" id="bar-keyword" style="width: 0%;"></div></div>
+                            </div>
+
+                            <div class="breakdown-progress-row">
+                                <div class="progress-label-row">
+                                    <span>Projects Match</span>
+                                    <strong id="bar-projects-val">0%</strong>
+                                </div>
+                                <div class="progress-track"><div class="progress-fill bg-teal" id="bar-projects" style="width: 0%;"></div></div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Secondary Results Grid (Tag clouds) -->
+                <div class="match-tags-grid">
+                    
+                    <!-- Matched Skills -->
+                    <div class="saas-card tags-card card-matched-skills">
+                        <h3>Matched Skills</h3>
+                        <div class="tags-cloud-container" id="matchedSkillsCloud">
+                            <p class="placeholder-text">Run match analysis</p>
+                        </div>
+                    </div>
+
+                    <!-- Missing Skills -->
+                    <div class="saas-card tags-card card-missing-skills">
+                        <h3>Missing Skills</h3>
+                        <div class="tags-cloud-container" id="missingSkillsCloud">
+                            <p class="placeholder-text">Run match analysis</p>
+                        </div>
+                    </div>
+
+                    <!-- Matched Keywords -->
+                    <div class="saas-card tags-card card-matched-keywords">
+                        <h3>Matched Keywords</h3>
+                        <div class="tags-cloud-container" id="matchedKeywordsCloud">
+                            <p class="placeholder-text">Run match analysis</p>
+                        </div>
+                    </div>
+
+                    <!-- Missing Keywords -->
+                    <div class="saas-card tags-card card-missing-keywords">
+                        <h3>Missing Keywords</h3>
+                        <div class="tags-cloud-container" id="missingKeywordsCloud">
+                            <p class="placeholder-text">Run match analysis</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Action Recommendations checklist -->
+                <div class="saas-card recommendations-panel-card">
+                    <h3>Action Recommendations</h3>
+                    <div class="recs-list-container" id="recommendationsList">
+                        <p class="placeholder-text">Actionable PostgreSQL-generated tasks list will populate here.</p>
+                    </div>
+                </div>
+
+                <!-- Job Match Action buttons -->
+                <div class="job-match-footer-actions">
+                    <button type="button" class="btn btn-outline" id="btnDownloadReport">
+                        <i class="fa-solid fa-file-pdf"></i> Download Match Report
+                    </button>
+                    <a href="editor.html" class="btn btn-secondary" id="btnImproveResume">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i> Improve Resume
+                    </a>
+                    <button type="button" class="btn btn-outline" id="btnAnalyzeAgain">
+                        <i class="fa-solid fa-rotate"></i> Analyze Again
+                    </button>
+                    <button type="button" class="btn btn-outline" id="btnSaveJob">
+                        <i class="fa-solid fa-bookmark"></i> Save Job
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+<!-- Loading overlay -->
+<div class="loading-overlay" id="loadingOverlay" style="display: none;">
+    <div class="spinner-container">
+        <div class="spinner"></div>
+        <h3>Analyzing Job Match...</h3>
+        <p>PostgreSQL is running skill extraction and shortlist probability mapping</p>
+    </div>
+</div>
+
+<!-- Scripts -->
+<script src="js/common.js"></script>
+<script src="js/job_match.js"></script>
+</body>
+</html>

@@ -1,141 +1,18 @@
-/* Layout A CSS */
-.resume.layout-a {
-    font-family: 'Georgia', Times, serif;
-    color: #1e293b;
-    line-height: 1.5;
-    background: #ffffff;
-}
-
-.resume-header {
-    text-align: center;
-    border-bottom: 2px solid #16a34a;
-    padding-bottom: 16px;
-    margin-bottom: 24px;
-}
-
-.resume-name {
-    font-size: 32px;
-    font-weight: 700;
-    color: #0f172a;
-    letter-spacing: -0.02em;
-}
-
-.resume-title {
-    font-size: 16px;
-    font-weight: 500;
-    color: #16a34a;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin-top: 4px;
-}
-
-.resume-contact {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 16px;
-    margin-top: 12px;
-    font-size: 13px;
-    color: #64748b;
-}
-
-.resume-contact span i {
-    color: #16a34a;
-}
-
-.resume-contact a {
-    color: #16a34a;
-    text-decoration: none;
-}
-
-.resume-section {
-    margin-bottom: 24px;
-}
-
-.resume-section h3 {
-    font-size: 16px;
-    font-weight: 700;
-    color: #0f172a;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin-bottom: 6px;
-}
-
-.section-divider {
-    height: 1.5px;
-    background: #cbd5e1;
-    margin-bottom: 12px;
-}
-
-.summary-text {
-    font-size: 14px;
-    color: #334155;
-    text-align: justify;
-}
-
-.items-list {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
-
-.resume-item {
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-}
-
-.item-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-}
-
-.item-title {
-    font-size: 15px;
-    color: #0f172a;
-}
-
-.item-date {
-    font-size: 13px;
-    color: #64748b;
-    font-weight: 600;
-}
-
-.item-sub {
-    font-size: 13.5px;
-    color: #475569;
-}
-
-.item-details {
-    font-size: 13.5px;
-    color: #334155;
-    margin-top: 2px;
-}
-
-.item-link {
-    font-size: 12px;
-    color: #16a34a;
-}
-
-.item-link a {
-    color: #16a34a;
-    text-decoration: none;
-}
-
-.skills-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-}
-
-.skill-tag {
-    background: #f1f5f9;
-    color: #334155;
-    padding: 4px 10px;
-    border-radius: 4px;
-    font-size: 13px;
-    font-weight: 500;
-    border: 1px solid #e2e8f0;
-}
-
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+.resume.tpl-007 { font-family: 'Plus Jakarta Sans', sans-serif; color: #1e293b; background: #ffffff; padding: 18mm 16mm; box-sizing: border-box; }
+.tpl-007 .header { text-align: center; border-bottom: 2px solid #ddd6fe; padding-bottom: 14px; margin-bottom: 18px; }
+.tpl-007 .name { font-size: 30px; font-weight: 800; color: #6d28d9; margin: 0; letter-spacing: -0.02em; }
+.tpl-007 .title { font-size: 14px; font-weight: 700; color: #7c3aed; text-transform: uppercase; letter-spacing: 0.06em; margin: 4px 0 8px 0; }
+.tpl-007 .c-box { font-size: 12.5px; color: #475569; }
+.tpl-007 .sec-h { font-size: 14px; font-weight: 700; color: #6d28d9; text-transform: uppercase; letter-spacing: 0.05em; margin: 18px 0 12px 0; }
+.tpl-007 .summary-p { font-size: 13px; line-height: 1.6; color: #334155; background: #f5f3ff; padding: 12px; border-radius: 8px; border-left: 4px solid #7c3aed; border: 1px solid #ddd6fe; border-left-width: 4px; }
+.tpl-007 .timeline { position: relative; border-left: 2px solid #ddd6fe; margin-left: 10px; padding-left: 16px; }
+.tpl-007 .tl-item { position: relative; margin-bottom: 14px; }
+.tpl-007 .tl-dot { position: absolute; left: -22px; top: 4px; width: 10px; height: 10px; border-radius: 50%; background: #7c3aed; border: 2px solid #ffffff; }
+.tpl-007 .tl-head { font-size: 13.5px; color: #0f172a; display: flex; justify-content: space-between; }
+.tpl-007 .tl-date { font-size: 12px; color: #64748b; }
+.tpl-007 .tl-sub { font-size: 12.5px; color: #7c3aed; font-weight: 600; margin-top: 2px; }
+.tpl-007 .tl-score { font-size: 12px; color: #166534; font-weight: 700; margin-top: 2px; }
+.tpl-007 .tl-desc { font-size: 12.5px; color: #334155; margin-top: 4px; line-height: 1.5; white-space: pre-line; }
+.tpl-007 .skills-flex { display: flex; flex-wrap: wrap; gap: 8px; }
+.tpl-007 .chip { background: #f5f3ff; color: #5b21b6; font-size: 12.5px; font-weight: 600; padding: 5px 12px; border-radius: 6px; border: 1px solid #ddd6fe; }

@@ -14,54 +14,116 @@
 
     <div class="container">
 
-        <!-- Sidebar loads dynamically here -->
+        <!-- Left Sidebar Navigation -->
         <div id="sidebar"></div>
 
-        <!-- Main -->
+        <!-- Main Content Area -->
         <main class="main-content">
 
-            <header class="saas-header animate-fade">
-                <div>
-                    <h1>Create New Resume</h1>
-                    <p>Provide a title and choose a premium template layout</p>
-                </div>
-
-                <div class="profile">
-                    <i class="fa-solid fa-user"></i>
-                    Welcome, <strong id="username">Guest</strong>
+            <!-- Hero Header Section (Clean Centered Title & Subtitle) -->
+            <header class="gallery-hero-header animate-fade">
+                <div class="hero-header-content">
+                    <h1 class="gallery-title">
+                        Choose your <span class="purple-highlight">perfect</span> template
+                    </h1>
+                    <p class="gallery-subtitle">
+                        Pick a template you love. You can change the colors anytime.
+                    </p>
                 </div>
             </header>
 
-            <!-- Resume Form Card -->
-            <div class="saas-card animate-slide">
-                <h2>
-                    <i class="fa-solid fa-file-circle-plus" style="color: var(--primary); margin-right: 8px;"></i>
-                    Resume Details
-                </h2>
-                <p class="card-desc">Enter the title of your resume and pick one of our optimized designs to get started.</p>
+            <!-- Main Form Container -->
+            <form id="resumeForm">
 
-                <form id="resumeForm">
-                    <div class="form-group">
-                        <label for="resume_title">Resume Title <span>*</span></label>
-                        <input
-                            type="text"
-                            id="resume_title"
-                            class="form-input"
-                            placeholder="e.g. Senior Software Engineer Resume"
-                            required>
-                        <small style="color: var(--text-light); font-size: 12px; margin-top: 4px; display: block;">
+                <!-- Resume Details Input Card (with Upload button beside Title) -->
+                <div class="resume-details-card saas-card animate-slide">
+                    <div class="card-header-row">
+                        <div class="card-icon-title">
+                            <i class="fa-solid fa-file-circle-plus title-icon"></i>
+                            <h2>Resume Details</h2>
+                        </div>
+                    </div>
+                    <p class="card-desc">Enter the title of your resume and pick one of our optimized designs to get started.</p>
+
+                    <div class="form-group title-input-group">
+                        <label for="resume_title">Resume Title <span class="required">*</span></label>
+                        
+                        <!-- Input Row with Upload Button beside Resume Title -->
+                        <div class="input-with-button-row">
+                            <input
+                                type="text"
+                                id="resume_title"
+                                class="form-input"
+                                placeholder="e.g. Senior Software Engineer Resume"
+                                value=""
+                                required>
+
+                            <button type="button" id="btnUploadDesign" class="btn-upload-design disabled" disabled>
+                                <i class="fa-solid fa-cloud-arrow-up"></i>
+                                <span>Upload your own design</span>
+                            </button>
+                        </div>
+
+                        <small class="form-help">
                             Give your resume a name to distinguish it in your dashboard.
                         </small>
                     </div>
+                </div>
 
-                    <h3 style="margin-top: 36px; margin-bottom: 18px; font-size: 18px; font-weight: 700;">
-                        Choose Resume Template
-                    </h3>
+                <!-- Template Selection Section -->
+                <div class="template-selection-container saas-card animate-slide">
+                    <div class="template-section-header">
+                        <h3>Choose Resume Template</h3>
+                    </div>
 
-                    <div class="templates" id="templatesContainer"></div>
+                    <!-- Color Selector Toolbar (Image 1 "Pick a color") -->
+                    <div class="color-picker-bar">
+                        <span class="color-picker-label">
+                            <i class="fa-solid fa-palette"></i> Pick a color
+                        </span>
 
+                        <div class="color-swatches" id="colorSwatches">
+                            <button type="button" class="swatch-btn active" data-color="#2563eb" style="background-color: #2563eb;" title="Royal Blue"><i class="fa-solid fa-check"></i></button>
+                            <button type="button" class="swatch-btn" data-color="#0d9488" style="background-color: #0d9488;" title="Teal"></button>
+                            <button type="button" class="swatch-btn" data-color="#4f46e5" style="background-color: #4f46e5;" title="Indigo"></button>
+                            <button type="button" class="swatch-btn" data-color="#7c3aed" style="background-color: #7c3aed;" title="Purple"></button>
+                            <button type="button" class="swatch-btn" data-color="#db2777" style="background-color: #db2777;" title="Magenta"></button>
+                            <button type="button" class="swatch-btn" data-color="#dc2626" style="background-color: #dc2626;" title="Red"></button>
+                            <button type="button" class="swatch-btn" data-color="#ea580c" style="background-color: #ea580c;" title="Orange"></button>
+                            <button type="button" class="swatch-btn" data-color="#eab308" style="background-color: #eab308;" title="Yellow"></button>
+                            <button type="button" class="swatch-btn" data-color="#059669" style="background-color: #059669;" title="Emerald"></button>
+                            <button type="button" class="swatch-btn" data-color="#0284c7" style="background-color: #0284c7;" title="Sky Blue"></button>
+                            <button type="button" class="swatch-btn" data-color="#475569" style="background-color: #475569;" title="Slate"></button>
+                            
+                            <!-- Custom Color Picker Wheel -->
+                            <label class="swatch-wheel-label" title="Custom color">
+                                <input type="color" id="customColorPicker" value="#2563eb">
+                                <div class="swatch-wheel-btn">
+                                    <i class="fa-solid fa-arrows-rotate wheel-icon"></i>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
 
+                    <!-- Category Filters & Search -->
+                    <div class="template-toolbar">
+                        <div class="search-box">
+                            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                            <input type="text" id="templateSearch" placeholder="Search templates...">
+                        </div>
+                        <div class="filter-badges">
+                            <button type="button" class="filter-badge active" data-filter="all">All</button>
+                            <button type="button" class="filter-badge" data-filter="ats">ATS Friendly</button>
+                            <button type="button" class="filter-badge" data-filter="premium">Premium</button>
+                        </div>
+                    </div>
 
+                    <!-- Dynamic Templates Gallery Grid -->
+                    <div class="templates" id="templatesContainer">
+                        <!-- Dynamic template cards rendered via JS -->
+                    </div>
+
+                    <!-- Action Buttons -->
                     <div class="buttons-row">
                         <button
                             type="button"
@@ -70,26 +132,15 @@
                             Cancel
                         </button>
                     </div>
+                </div>
 
-                </form>
-
-            </div>
+            </form>
 
         </main>
-
     </div>
 
-    <script src="js/common.js?v=2"></script>
-    <script src="js/create_resume.js?v=2"></script>
-    <script>
-        // Set username in header
-        window.addEventListener('DOMContentLoaded', () => {
-            const fullName = localStorage.getItem("full_name");
-            const usernameEl = document.getElementById("username");
-            if (fullName && usernameEl) {
-                usernameEl.textContent = fullName;
-            }
-        });
-    </script>
+    <!-- JS Scripts -->
+    <script src="js/common.js?v=7"></script>
+    <script src="js/create_resume.js?v=7"></script>
 </body>
 </html>

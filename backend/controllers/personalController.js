@@ -1,10 +1,10 @@
 const pool = require("../config/db");
+const { ensureTableColumns } = require("../utils/dynamicSchema");
 
 const savePersonalDetails = async (req, res) => {
-
     const client = await pool.connect();
-
     try {
+        await ensureTableColumns(client, "resume_personal", req.body);
 
         const {
             resume_personal_id,
@@ -26,28 +26,29 @@ const savePersonalDetails = async (req, res) => {
             profile_photo
         } = req.body;
 
-        const jsonData = JSON.stringify([
-            {
-                resume_personal_id: resume_personal_id || null,
-                resume_id,
-                first_name,
-                last_name,
-                email,
-                mobile,
-                date_of_birth,
-                address,
-                city,
-                state,
-                country,
-                pincode,
-                linkedin_url,
-                github_url,
-                portfolio_url,
-                professional_summary,
-                profile_photo,
-                record_status: 1
-            }
-        ]);
+        const payloadObj = {
+            resume_personal_id: resume_personal_id || null,
+            resume_id,
+            first_name,
+            last_name,
+            email,
+            mobile,
+            date_of_birth,
+            address,
+            city,
+            state,
+            country,
+            pincode,
+            linkedin_url,
+            github_url,
+            portfolio_url,
+            professional_summary,
+            profile_photo,
+            record_status: 1,
+            ...req.body
+        };
+
+        const jsonData = JSON.stringify([payloadObj]);
 
         await client.query("BEGIN");
 
@@ -57,34 +58,22 @@ const savePersonalDetails = async (req, res) => {
         );
 
         const cursorName = cursorResult.rows[0].p_refcur;
-
         const result = await client.query(
             `FETCH ALL IN "${cursorName}"`
         );
 
         await client.query("COMMIT");
-
         res.json(result.rows[0]);
-
-    }
-    catch (err) {
-
+    } catch (err) {
         await client.query("ROLLBACK");
-
         console.error(err);
-
         res.status(500).json({
             success: false,
             message: err.message
         });
-
-    }
-    finally {
-
+    } finally {
         client.release();
-
     }
-
 };
 
 module.exports = {

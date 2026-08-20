@@ -1,0 +1,814 @@
+/* ==========================================================================
+   ATS Resume Score Stylesheet - Premium UI
+   ========================================================================== */
+
+/* Main Container Layout */
+.ats-dashboard-grid {
+    display: flex;
+    gap: 28px;
+    margin-top: 24px;
+    align-items: start;
+}
+
+.ats-left-col {
+    width: 330px;
+    flex-shrink: 0;
+}
+
+.ats-right-col {
+    flex-grow: 1;
+    min-width: 0;
+}
+
+@media (max-width: 1024px) {
+    .ats-dashboard-grid {
+        flex-direction: column;
+    }
+    .ats-left-col {
+        width: 100%;
+    }
+}
+
+/* Base Cards */
+.saas-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+    transition: var(--transition);
+}
+
+.saas-card:hover {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
+}
+
+/* Upload & Selection Left Card */
+.upload-section-card {
+    background: #ffffff;
+}
+
+.card-header-plain h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 6px;
+    font-family: var(--font-heading);
+}
+
+.card-header-plain p {
+    color: var(--text-light);
+    font-size: 0.85rem;
+}
+
+/* Drop Zone */
+.drop-zone {
+    border: 2px dashed #818cf8; /* Indigo 400 */
+    border-radius: var(--radius-md);
+    background: #f8fafc;
+    padding: 35px 20px;
+    text-align: center;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: var(--transition);
+}
+
+.drop-zone:hover, .drop-zone.dragover {
+    background: #f5f3ff; /* Purple 50 */
+    border-color: var(--primary);
+}
+
+.upload-icon-box {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #e0e7ff;
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    margin: 0 auto 16px;
+    transition: var(--transition);
+}
+
+.drop-zone:hover .upload-icon-box {
+    background: var(--primary);
+    color: #ffffff;
+    transform: scale(1.05);
+}
+
+.drop-zone-content h3 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 6px;
+}
+
+.or-text {
+    font-size: 0.75rem;
+    color: var(--text-inactive);
+    margin: 6px 0;
+}
+
+.btn-browse {
+    padding: 8px 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--primary);
+    color: var(--primary);
+    background: transparent;
+    cursor: pointer;
+    display: inline-block;
+    transition: var(--transition);
+}
+
+.btn-browse:hover {
+    background: var(--primary);
+    color: #ffffff;
+}
+
+.formats-text {
+    font-size: 0.7rem;
+    color: var(--text-light);
+    margin-top: 12px;
+}
+
+/* Upload Status */
+.upload-status-view {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.success-icon {
+    font-size: 2.5rem;
+    color: var(--success);
+}
+
+.upload-status-view h4 {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--text-main);
+    max-width: 100%;
+    word-break: break-all;
+}
+
+.upload-status-view p {
+    font-size: 0.75rem;
+    color: var(--text-light);
+}
+
+.btn-secondary.btn-sm {
+    padding: 6px 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: var(--radius-sm);
+    background: var(--secondary-light);
+    color: var(--text-muted);
+    border: 1px solid var(--border-color);
+}
+
+.btn-secondary.btn-sm:hover {
+    background: #e2e8f0;
+    color: var(--text-main);
+}
+
+/* Saved Resumes Selection */
+.or-separator {
+    display: flex;
+    align-items: center;
+    margin: 18px 0;
+}
+
+.sep-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border-color);
+}
+
+.sep-text {
+    padding: 0 10px;
+    font-size: 0.75rem;
+    color: var(--text-inactive);
+    font-weight: 700;
+}
+
+.form-select {
+    width: 100%;
+    padding: 11px 15px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+    background: #ffffff;
+    color: var(--text-main);
+    outline: none;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.form-select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+}
+
+.btn-analyze-ats {
+    width: 100%;
+    padding: 13px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    border-radius: var(--radius-md);
+    background: var(--primary);
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    margin-top: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: var(--transition);
+}
+
+.btn-analyze-ats:hover {
+    background: var(--primary-hover);
+    transform: translateY(-1px);
+}
+
+/* Right Column: Score Summary Card */
+.score-summary-row {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 24px;
+    margin-bottom: 24px;
+}
+
+@media (max-width: 768px) {
+    .score-summary-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+.score-meter-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.score-meter-card h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 20px;
+}
+
+.meter-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    margin-bottom: 20px;
+}
+
+/* SVG Circular Score Meter */
+.circular-meter {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    flex-shrink: 0;
+}
+
+.progress-svg {
+    width: 100%;
+    height: 100%;
+}
+
+.progress-bg {
+    fill: none;
+    stroke: #f1f5f9;
+    stroke-width: 9;
+}
+
+.progress-bar {
+    fill: none;
+    stroke-width: 9;
+    stroke-linecap: round;
+    stroke-dasharray: 251.2;
+    stroke-dashoffset: 251.2;
+    transform: rotate(-90deg);
+    transform-origin: 50% 50%;
+    transition: stroke-dashoffset 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.score-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.score-number {
+    font-size: 2rem;
+    font-weight: 800;
+    font-family: var(--font-heading);
+    color: var(--text-main);
+    line-height: 1;
+}
+
+.score-max {
+    font-size: 0.75rem;
+    color: var(--text-light);
+    font-weight: 600;
+    margin-top: 2px;
+}
+
+.meter-assessment h2 {
+    font-size: 1.6rem;
+    font-weight: 800;
+    font-family: var(--font-heading);
+    margin-bottom: 6px;
+}
+
+.meter-assessment p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+}
+
+.overall-progress-line-container {
+    margin-top: 12px;
+}
+
+.progress-line-bar {
+    width: 100%;
+    height: 10px;
+    background: #f1f5f9;
+    border-radius: 999px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.progress-line-fill {
+    height: 100%;
+    border-radius: 999px;
+    transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.overall-progress-text-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.overall-progress-text-row span {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
+/* Score Breakdown Grid Card */
+.score-breakdown-card h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.breakdown-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.breakdown-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: #ffffff;
+    border: 1px solid #f1f5f9;
+    padding: 10px 14px;
+    border-radius: var(--radius-md);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+    transition: var(--transition);
+}
+
+.breakdown-item:hover {
+    border-color: #cbd5e1;
+    transform: translateY(-1px);
+}
+
+.breakdown-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+}
+
+/* Premium Soft Background Theme */
+.bg-indigo { background: #e0e7ff; color: #4f46e5; }
+.bg-emerald { background: #d1fae5; color: #059669; }
+.bg-blue { background: #e0f2fe; color: #0284c7; }
+.bg-teal { background: #ccfbf1; color: #0f766e; }
+.bg-orange { background: #ffedd5; color: #ea580c; }
+.bg-amber { background: #fef3c7; color: #d97706; }
+.bg-purple { background: #f3e8ff; color: #9333ea; }
+
+.breakdown-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.breakdown-label {
+    font-size: 0.75rem;
+    color: var(--text-light);
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+
+.breakdown-value {
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: var(--text-main);
+}
+
+/* Bottom Grid (4 Columns side by side) */
+.results-secondary-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-bottom: 24px;
+}
+
+@media (max-width: 1280px) {
+    .results-secondary-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .results-secondary-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Keywords Card */
+.keyword-tags-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 280px;
+    overflow-y: auto;
+}
+
+.kw-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 12px;
+    border-radius: var(--radius-sm);
+    font-size: 0.8rem;
+    font-weight: 600;
+    border: 1px solid transparent;
+}
+
+.kw-badge.matched {
+    background: #e6fcf5;
+    color: #0ca678;
+    border-color: rgba(12, 166, 120, 0.1);
+}
+
+.kw-badge.missing {
+    background: #f1f3f5;
+    color: #495057;
+}
+
+.kw-badge.missing-required {
+    background: #fff5f5;
+    color: #fa5252;
+    border-color: rgba(250, 82, 82, 0.1);
+}
+
+/* Suggestions Checklist Card */
+.suggestions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-height: 280px;
+    overflow-y: auto;
+}
+
+.suggestion-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.825rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+    font-weight: 500;
+}
+
+.suggestion-item i {
+    color: var(--success);
+    margin-top: 2px;
+    font-size: 0.85rem;
+}
+
+/* Skills Match Card */
+.skills-match-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.skills-match-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    text-align: center;
+}
+
+.skills-match-circle {
+    position: relative;
+    width: 90px;
+    height: 90px;
+}
+
+.skills-progress-svg {
+    width: 100%;
+    height: 100%;
+}
+
+.skills-progress-bg {
+    fill: none;
+    stroke: #f1f5f9;
+    stroke-width: 8;
+}
+
+.skills-progress-bar {
+    fill: none;
+    stroke: #0284c7;
+    stroke-width: 8;
+    stroke-linecap: round;
+    stroke-dasharray: 251.2;
+    stroke-dashoffset: 251.2;
+    transform: rotate(-90deg);
+    transform-origin: 50% 50%;
+    transition: stroke-dashoffset 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.skills-match-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.skills-match-percent {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--text-main);
+    line-height: 1;
+}
+
+.skills-match-lbl {
+    font-size: 0.6rem;
+    color: var(--text-light);
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-top: 2px;
+}
+
+.skills-details-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    text-align: left;
+}
+
+.skills-group-title {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--text-light);
+    margin-bottom: 6px;
+    display: block;
+}
+
+.skills-chips-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.skills-chip {
+    padding: 3px 8px;
+    border-radius: var(--radius-sm);
+    font-size: 0.725rem;
+    font-weight: 600;
+}
+
+.skills-chip.found {
+    background: #d1fae5;
+    color: #059669;
+}
+
+.skills-chip.missing {
+    background: #fee2e2;
+    color: #ef4444;
+}
+
+/* Sections Status Checklist Card */
+.sections-status-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.section-status-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.825rem;
+    font-weight: 500;
+    color: var(--text-muted);
+}
+
+.section-status-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.section-status-left i.completed {
+    color: var(--success);
+}
+
+.section-status-left i.missing {
+    color: var(--text-inactive);
+}
+
+.section-status-val {
+    font-weight: 700;
+    font-size: 0.775rem;
+}
+
+.section-status-val.completed {
+    color: var(--success-hover);
+}
+
+.section-status-val.missing {
+    color: var(--text-light);
+}
+
+/* Action Footer Panel */
+.ats-action-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: transparent;
+    border: none;
+    padding: 16px 0;
+    margin-top: 24px;
+    box-shadow: none;
+}
+
+.ats-action-footer .btn {
+    padding: 11px 24px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: var(--transition);
+}
+
+.ats-action-footer .btn-outline {
+    border: 1.5px solid var(--primary);
+    color: var(--primary);
+    background: transparent;
+}
+
+.ats-action-footer .btn-outline:hover {
+    background: var(--primary-glow);
+}
+
+.ats-action-footer .btn-secondary {
+    background: var(--primary);
+    color: #ffffff;
+    border: none;
+}
+
+.ats-action-footer .btn-secondary:hover {
+    background: var(--primary-hover);
+    transform: translateY(-1px);
+}
+
+/* Loading Overlay */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(4px);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.spinner-container {
+    background: #ffffff;
+    padding: 35px;
+    border-radius: var(--radius-lg);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    text-align: center;
+    width: 380px;
+}
+
+.spinner {
+    width: 48px;
+    height: 48px;
+    border: 4px solid #e2e8f0;
+    border-top-color: var(--primary);
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.spinner-container h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: var(--text-main);
+}
+
+.spinner-container p {
+    font-size: 0.85rem;
+    color: var(--text-light);
+}
+
+/* Sidebar Custom Overrides to match mockup */
+#sidebar {
+    background: #0d1222 !important; /* Dark navy */
+    padding: 24px 16px !important;
+}
+
+#sidebar .logo h2 {
+    color: #ffffff !important;
+    font-weight: 800;
+}
+
+#sidebar ul {
+    margin-top: 30px !important;
+    list-style: none;
+}
+
+#sidebar li {
+    margin-bottom: 8px !important;
+}
+
+#sidebar li a {
+    color: #94a3b8 !important;
+    font-weight: 600;
+    border-radius: 10px !important;
+    padding: 12px 16px !important;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: var(--transition);
+}
+
+#sidebar li a:hover {
+    color: #ffffff !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+}
+
+#sidebar li.active a {
+    color: #ffffff !important;
+    background: #4f46e5 !important; /* Purple pill background */
+    box-shadow: 0 4px 14px 0 rgba(79, 70, 229, 0.4) !important;
+}

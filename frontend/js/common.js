@@ -1,22 +1,24 @@
 var API_BASE_URL = window.location.port === "5000"
     ? ""
-    : (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1" ? "http://localhost:5000" : "");
+    : (window.location.protocol === "file:" || window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1" ? "http://localhost:5000" : "");
+
 
 // =============================
 // Session Check
 // =============================
 
 function checkLogin() {
+    const page = window.location.pathname.split("/").pop().toLowerCase();
+    if (page === "login.html" || page === "register.html" || page === "" || page === "index.html") {
+        return;
+    }
 
     const userId = localStorage.getItem("user_id");
 
     if (!userId) {
-
         alert("Please login first.");
-
         window.location.href = "login.html";
     }
-
 }
 
 // =============================

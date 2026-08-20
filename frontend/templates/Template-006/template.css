@@ -1,153 +1,19 @@
-/* Layout C CSS */
-.resume.layout-c {
-    font-family: 'Inter', -apple-system, sans-serif;
-    color: #1e293b;
-    line-height: 1.5;
-    background: #ffffff;
-}
-
-.resume-header {
-    border-left: 6px solid #ea580c;
-    padding-left: 20px;
-    margin-bottom: 24px;
-}
-
-.resume-name {
-    font-size: 30px;
-    font-weight: 800;
-    color: #0f172a;
-    letter-spacing: -0.025em;
-}
-
-.resume-title {
-    font-size: 16px;
-    font-weight: 600;
-    color: #ea580c;
-    margin-top: 2px;
-}
-
-.resume-contact {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 14px;
-    margin-top: 10px;
-    font-size: 12.5px;
-    color: #475569;
-}
-
-.resume-contact span i {
-    color: #ea580c;
-}
-
-.resume-contact a {
-    color: #ea580c;
-    text-decoration: none;
-}
-
-.resume-section {
-    margin-bottom: 24px;
-}
-
-.resume-section h3 {
-    font-size: 15px;
-    font-weight: 700;
-    color: #0f172a;
-    margin-bottom: 12px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    border-bottom: 2px solid #e2e8f0;
-    padding-bottom: 6px;
-}
-
-.resume-section h3 i {
-    color: #ea580c;
-}
-
-.summary-text {
-    font-size: 13.5px;
-    color: #334155;
-    text-align: justify;
-}
-
-.items-list {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-}
-
-.resume-item {
-    padding-left: 14px;
-    border-left: 2px solid #e2e8f0;
-}
-
-.item-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-}
-
-.item-title {
-    font-size: 14.5px;
-    font-weight: 700;
-    color: #0f172a;
-}
-
-.item-date {
-    font-size: 12.5px;
-    color: #64748b;
-    font-weight: 500;
-}
-
-.item-sub {
-    font-size: 13px;
-    color: #475569;
-    margin-top: 2px;
-}
-
-.item-details {
-    font-size: 13px;
-    color: #334155;
-    margin-top: 4px;
-}
-
-.links-row {
-    display: flex;
-    gap: 12px;
-    margin-top: 4px;
-}
-
-.links-row a {
-    font-size: 12px;
-    color: #ea580c;
-    text-decoration: none;
-    font-weight: 600;
-}
-
-.skills-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
-}
-
-.skill-card {
-    background: #f8fafc;
-    border: 1px solid #f1f5f9;
-    padding: 6px 12px;
-    border-radius: 6px;
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-}
-
-.skill-name {
-    font-size: 13px;
-    font-weight: 600;
-    color: #0f172a;
-}
-
-.skill-level {
-    font-size: 11px;
-    color: #64748b;
-}
-
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+.resume.tpl-006 { font-family: 'Inter', sans-serif; color: #0f172a; background: #ffffff; padding: 18mm 16mm; box-sizing: border-box; }
+.tpl-006 .header { text-align: center; margin-bottom: 20px; }
+.tpl-006 .name { font-size: 30px; font-weight: 800; color: #0369a1; margin: 0; letter-spacing: -0.01em; }
+.tpl-006 .title { font-size: 14px; font-weight: 700; color: #0284c7; text-transform: uppercase; letter-spacing: 0.06em; margin: 4px 0 12px 0; }
+.tpl-006 .contacts { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; font-size: 12.5px; }
+.tpl-006 .contacts span { color: #334155; }
+.tpl-006 .contacts a { color: #0284c7; text-decoration: none; font-weight: 600; }
+.tpl-006 .band { background: #e0f2fe; color: #0369a1; font-size: 13.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 8px 14px; border-radius: 6px; margin: 18px 0 12px 0; border: 1px solid #bae6fd; }
+.tpl-006 .summary { font-size: 13px; line-height: 1.6; color: #334155; padding: 0 4px; }
+.tpl-006 .box { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px 14px; margin-bottom: 10px; }
+.tpl-006 .b-row { display: flex; justify-content: space-between; font-size: 13.5px; color: #0f172a; }
+.tpl-006 .date { font-size: 12px; color: #64748b; }
+.tpl-006 .b-sub { font-size: 12.5px; color: #0284c7; font-weight: 600; margin-top: 3px; }
+.tpl-006 .b-tag { font-size: 12px; color: #15803d; font-weight: 700; margin-top: 4px; }
+.tpl-006 .desc { font-size: 12.5px; color: #334155; margin-top: 4px; line-height: 1.5; white-space: pre-line; }
+.tpl-006 .s-grid { display: flex; flex-wrap: wrap; gap: 8px; padding: 0 4px; }
+.tpl-006 .s-badge { background: #bae6fd; color: #0369a1; font-size: 12.5px; font-weight: 600; padding: 5px 12px; border-radius: 6px; }
+.tpl-006 .cert-row { font-size: 13px; color: #334155; padding: 3px 4px; }

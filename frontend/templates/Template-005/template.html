@@ -1,110 +1,97 @@
-<div class="resume layout-b">
-    <!-- Header -->
-    <header class="resume-header">
-        <h1 class="resume-name">{{full_name}}</h1>
-        <h2 class="resume-title">{{designation}}</h2>
-        <div class="resume-contact">
-            <!-- {{#if email}} --><span><i class="fa-solid fa-envelope"></i> {{email}}</span><!-- {{/if}} -->
-            <!-- {{#if mobile}} --><span><i class="fa-solid fa-phone"></i> {{mobile}}</span><!-- {{/if}} -->
-            <!-- {{#if location}} --><span><i class="fa-solid fa-location-dot"></i> {{location}}</span><!-- {{/if}} -->
-            <!-- {{#if linkedin_url}} --><span><i class="fa-brands fa-linkedin"></i> <a href="{{linkedin_url}}" target="_blank">LinkedIn</a></span><!-- {{/if}} -->
-            <!-- {{#if github_url}} --><span><i class="fa-brands fa-github"></i> <a href="{{github_url}}" target="_blank">GitHub</a></span><!-- {{/if}} -->
+<div class="resume tpl-005">
+    <header class="header">
+        <div class="h-left">
+            <h1 class="name">{{full_name}}</h1>
+            <h2 class="role">{{designation}}</h2>
+        </div>
+        <div class="h-right">
+            <!-- {{#if email}} --><div>{{email}}</div><!-- {{/if}} -->
+            <!-- {{#if mobile}} --><div>{{mobile}}</div><!-- {{/if}} -->
+            <!-- {{#if location}} --><div>{{location}}</div><!-- {{/if}} -->
+            <!-- {{#if linkedin_url}} --><div><a href="{{linkedin_url}}" target="_blank">LinkedIn</a></div><!-- {{/if}} -->
         </div>
     </header>
 
-    <!-- Summary -->
+    <div class="thin-divider"></div>
+
     <!-- {{#if professional_summary}} -->
-    <section class="resume-section">
-        <h3>Professional Summary</h3>
-        <p class="summary-text">{{professional_summary}}</p>
+    <section class="section">
+        <h3 class="sec-title">Career Objective</h3>
+        <p class="obj-text">{{professional_summary}}</p>
     </section>
     <!-- {{/if}} -->
 
-    <!-- Education -->
     <!-- {{#if education}} -->
-    <section class="resume-section">
-        <h3>Education</h3>
-        <div class="items-list">
+    <section class="section">
+        <h3 class="sec-title">Education</h3>
+        <div class="cards">
             <!-- {{#education}} -->
-            <div class="resume-item">
-                <div class="item-header">
-                    <span class="item-title"><strong>{{institution}}</strong></span>
-                    <span class="item-date">{{start_year}} - {{end_year}}</span>
+            <div class="m-card">
+                <div class="m-head">
+                    <span class="m-title"><strong>{{degree}}</strong> - {{field_of_study}}</span>
+                    <span class="m-date">{{start_year}} - {{end_year}}</span>
                 </div>
-                <div class="item-sub">{{degree}} in {{field_of_study}} ({{university}})</div>
-                <!-- {{#if cgpa_percentage}} --><p class="item-details">Score: {{cgpa_percentage}}</p><!-- {{/if}} -->
+                <div class="m-sub">{{institution}} <!-- {{#if university}} -->({{university}})<!-- {{/if}} --></div>
+                <!-- {{#if cgpa_percentage}} --><div class="m-score">CGPA / Score: {{cgpa_percentage}}</div><!-- {{/if}} -->
             </div>
             <!-- {{/education}} -->
         </div>
     </section>
     <!-- {{/if}} -->
 
-    <!-- Experience -->
     <!-- {{#if experience}} -->
-    <section class="resume-section">
-        <h3>Experience</h3>
-        <div class="items-list">
+    <section class="section">
+        <h3 class="sec-title">Internships & Work History</h3>
+        <div class="cards">
             <!-- {{#experience}} -->
-            <div class="resume-item">
-                <div class="item-header">
-                    <span class="item-title"><strong>{{company_name}}</strong></span>
-                    <span class="item-date">{{start_date}} - {{end_date_or_present}}</span>
+            <div class="m-card">
+                <div class="m-head">
+                    <span class="m-title"><strong>{{job_title}}</strong> @ {{company_name}}</span>
+                    <span class="m-date">{{start_date}} - {{end_date_or_present}}</span>
                 </div>
-                <div class="item-sub">{{job_title}} | {{employment_type}} | {{location}}</div>
-                <p class="item-details">{{job_description}}</p>
+                <div class="m-sub">{{location}}</div>
+                <p class="m-desc">{{job_description}}</p>
             </div>
             <!-- {{/experience}} -->
         </div>
     </section>
     <!-- {{/if}} -->
 
-    <!-- Skills -->
-    <!-- {{#if skills}} -->
-    <section class="resume-section">
-        <h3>Skills</h3>
-        <div class="skills-grid">
-            <!-- {{#skills}} -->
-            <span class="skill-item"><strong>{{skill_name}}</strong>: {{skill_level}}</span>
-            <!-- {{/skills}} -->
-        </div>
-    </section>
-    <!-- {{/if}} -->
-
-    <!-- Projects -->
     <!-- {{#if projects}} -->
-    <section class="resume-section">
-        <h3>Projects</h3>
-        <div class="items-list">
+    <section class="section">
+        <h3 class="sec-title">Projects</h3>
+        <div class="cards">
             <!-- {{#projects}} -->
-            <div class="resume-item">
-                <div class="item-header">
-                    <span class="item-title"><strong>{{project_name}}</strong></span>
-                    <span class="item-date">{{start_date}} - {{end_date}}</span>
+            <div class="m-card">
+                <div class="m-head">
+                    <span class="m-title"><strong>{{project_name}}</strong> ({{role}})</span>
+                    <span class="m-date">{{start_date}} - {{end_date}}</span>
                 </div>
-                <div class="item-sub">Role: {{role}} | Technologies: {{technologies_used}}</div>
-                <p class="item-details">{{project_description}}</p>
-                <!-- {{#if github_url}} --><p class="item-link">GitHub: <a href="{{github_url}}" target="_blank">{{github_url}}</a></p><!-- {{/if}} -->
-                <!-- {{#if live_project_url}} --><p class="item-link">Demo: <a href="{{live_project_url}}" target="_blank">{{live_project_url}}</a></p><!-- {{/if}} -->
+                <div class="m-sub">Technologies: {{technologies_used}}</div>
+                <p class="m-desc">{{project_description}}</p>
             </div>
             <!-- {{/projects}} -->
         </div>
     </section>
     <!-- {{/if}} -->
 
-    <!-- Certifications -->
+    <!-- {{#if skills}} -->
+    <section class="section">
+        <h3 class="sec-title">Skills</h3>
+        <div class="skills-box">
+            <!-- {{#skills}} -->
+            <span class="sk-pill">{{skill_name}}</span>
+            <!-- {{/skills}} -->
+        </div>
+    </section>
+    <!-- {{/if}} -->
+
     <!-- {{#if certifications}} -->
-    <section class="resume-section">
-        <h3>Certifications</h3>
-        <div class="items-list">
+    <section class="section">
+        <h3 class="sec-title">Certifications</h3>
+        <div class="cert-box">
             <!-- {{#certifications}} -->
-            <div class="resume-item">
-                <div class="item-header">
-                    <span class="item-title"><strong>{{certification_name}}</strong></span>
-                    <span class="item-date">{{issue_date}}</span>
-                </div>
-                <div class="item-sub">Issuing Org: {{issuing_organization}} <!-- {{#if credential_id}} -->| ID: {{credential_id}}<!-- {{/if}} --></div>
-                <p class="item-details">{{description}}</p>
-            </div>
+            <div class="cert-item"><strong>{{certification_name}}</strong> - {{issuing_organization}}</div>
             <!-- {{/certifications}} -->
         </div>
     </section>

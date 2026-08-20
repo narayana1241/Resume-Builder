@@ -1,9 +1,9 @@
-<div class="resume layout-a">
-    <!-- Header -->
+<div class="resume tpl-001">
+    <div class="top-accent"></div>
     <header class="resume-header">
         <h1 class="resume-name">{{full_name}}</h1>
         <h2 class="resume-title">{{designation}}</h2>
-        <div class="resume-contact">
+        <div class="contact-pills">
             <!-- {{#if email}} --><span><i class="fa-solid fa-envelope"></i> {{email}}</span><!-- {{/if}} -->
             <!-- {{#if mobile}} --><span><i class="fa-solid fa-phone"></i> {{mobile}}</span><!-- {{/if}} -->
             <!-- {{#if location}} --><span><i class="fa-solid fa-location-dot"></i> {{location}}</span><!-- {{/if}} -->
@@ -12,105 +12,88 @@
         </div>
     </header>
 
-    <!-- Summary -->
     <!-- {{#if professional_summary}} -->
-    <section class="resume-section">
-        <h3>Professional Summary</h3>
-        <div class="section-divider"></div>
-        <p class="summary-text">{{professional_summary}}</p>
+    <section class="resume-sec">
+        <h3 class="sec-title"><i class="fa-solid fa-bullseye"></i> Career Objective</h3>
+        <p class="summary-box">{{professional_summary}}</p>
     </section>
     <!-- {{/if}} -->
 
-    <!-- Education -->
     <!-- {{#if education}} -->
-    <section class="resume-section">
-        <h3>Education</h3>
-        <div class="section-divider"></div>
-        <div class="items-list">
+    <section class="resume-sec">
+        <h3 class="sec-title"><i class="fa-solid fa-graduation-cap"></i> Education & Academic Credentials</h3>
+        <div class="cards-list">
             <!-- {{#education}} -->
-            <div class="resume-item">
-                <div class="item-header">
-                    <span class="item-title"><strong>{{degree}}</strong> in {{field_of_study}}</span>
-                    <span class="item-date">{{start_year}} - {{end_year}}</span>
+            <div class="item-card">
+                <div class="card-head">
+                    <span class="main-title"><strong>{{degree}}</strong> in {{field_of_study}}</span>
+                    <span class="date-tag"><i class="fa-regular fa-calendar"></i> {{start_year}} – {{end_year}}</span>
                 </div>
-                <div class="item-sub"><strong>{{institution}}</strong>, {{university}}</div>
-                <!-- {{#if cgpa_percentage}} --><p class="item-details">CGPA/Percentage: {{cgpa_percentage}}</p><!-- {{/if}} -->
+                <div class="sub-title"><i class="fa-solid fa-building-columns"></i> {{institution}} <!-- {{#if university}} -->({{university}})<!-- {{/if}} --></div>
+                <!-- {{#if cgpa_percentage}} --><div class="score-badge">CGPA / Percentage: <strong>{{cgpa_percentage}}</strong></div><!-- {{/if}} -->
             </div>
             <!-- {{/education}} -->
         </div>
     </section>
     <!-- {{/if}} -->
 
-    <!-- Experience -->
     <!-- {{#if experience}} -->
-    <section class="resume-section">
-        <h3>Work Experience</h3>
-        <div class="section-divider"></div>
-        <div class="items-list">
+    <section class="resume-sec">
+        <h3 class="sec-title"><i class="fa-solid fa-briefcase"></i> Internships & Practical Experience</h3>
+        <div class="cards-list">
             <!-- {{#experience}} -->
-            <div class="resume-item">
-                <div class="item-header">
-                    <span class="item-title"><strong>{{job_title}}</strong></span>
-                    <span class="item-date">{{start_date}} - {{end_date_or_present}}</span>
+            <div class="item-card">
+                <div class="card-head">
+                    <span class="main-title"><strong>{{job_title}}</strong> — {{company_name}}</span>
+                    <span class="date-tag"><i class="fa-regular fa-calendar"></i> {{start_date}} – {{end_date_or_present}}</span>
                 </div>
-                <div class="item-sub"><strong>{{company_name}}</strong> | {{employment_type}} | {{location}}</div>
-                <p class="item-details">{{job_description}}</p>
+                <div class="sub-title"><i class="fa-solid fa-location-dot"></i> {{location}}</div>
+                <p class="desc-p">{{job_description}}</p>
             </div>
             <!-- {{/experience}} -->
         </div>
     </section>
     <!-- {{/if}} -->
 
-    <!-- Skills -->
-    <!-- {{#if skills}} -->
-    <section class="resume-section">
-        <h3>Technical Skills</h3>
-        <div class="section-divider"></div>
-        <div class="skills-list">
-            <!-- {{#skills}} -->
-            <span class="skill-tag">{{skill_name}} <small>({{skill_level}})</small></span>
-            <!-- {{/skills}} -->
-        </div>
-    </section>
-    <!-- {{/if}} -->
-
-    <!-- Projects -->
     <!-- {{#if projects}} -->
-    <section class="resume-section">
-        <h3>Academic & Personal Projects</h3>
-        <div class="section-divider"></div>
-        <div class="items-list">
+    <section class="resume-sec">
+        <h3 class="sec-title"><i class="fa-solid fa-laptop-code"></i> Academic & Personal Projects</h3>
+        <div class="cards-list">
             <!-- {{#projects}} -->
-            <div class="resume-item">
-                <div class="item-header">
-                    <span class="item-title"><strong>{{project_name}}</strong> ({{role}})</span>
-                    <span class="item-date">{{start_date}} - {{end_date}}</span>
+            <div class="item-card">
+                <div class="card-head">
+                    <span class="main-title"><strong>{{project_name}}</strong> ({{role}})</span>
+                    <span class="date-tag"><i class="fa-regular fa-calendar"></i> {{start_date}} – {{end_date}}</span>
                 </div>
-                <div class="item-sub">Technologies: {{technologies_used}}</div>
-                <p class="item-details">{{project_description}}</p>
-                <!-- {{#if github_url}} --><p class="item-link">GitHub: <a href="{{github_url}}" target="_blank">{{github_url}}</a></p><!-- {{/if}} -->
-                <!-- {{#if live_project_url}} --><p class="item-link">Live Link: <a href="{{live_project_url}}" target="_blank">{{live_project_url}}</a></p><!-- {{/if}} -->
+                <div class="tech-tag">Tech Stack: <span>{{technologies_used}}</span></div>
+                <p class="desc-p">{{project_description}}</p>
+                <div class="links-row">
+                    <!-- {{#if github_url}} --><a href="{{github_url}}" target="_blank"><i class="fa-brands fa-github"></i> Code Repository</a><!-- {{/if}} -->
+                    <!-- {{#if live_project_url}} --><a href="{{live_project_url}}" target="_blank"><i class="fa-solid fa-globe"></i> Live Application</a><!-- {{/if}} -->
+                </div>
             </div>
             <!-- {{/projects}} -->
         </div>
     </section>
     <!-- {{/if}} -->
 
-    <!-- Certifications -->
+    <!-- {{#if skills}} -->
+    <section class="resume-sec">
+        <h3 class="sec-title"><i class="fa-solid fa-code"></i> Technical Competencies & Skills</h3>
+        <div class="skills-grid">
+            <!-- {{#skills}} -->
+            <span class="skill-pill"><strong>{{skill_name}}</strong> <small>({{skill_level}})</small></span>
+            <!-- {{/skills}} -->
+        </div>
+    </section>
+    <!-- {{/if}} -->
+
     <!-- {{#if certifications}} -->
-    <section class="resume-section">
-        <h3>Certifications</h3>
-        <div class="section-divider"></div>
-        <div class="items-list">
+    <section class="resume-sec">
+        <h3 class="sec-title"><i class="fa-solid fa-certificate"></i> Certifications & Credentials</h3>
+        <div class="cert-grid">
             <!-- {{#certifications}} -->
-            <div class="resume-item">
-                <div class="item-header">
-                    <span class="item-title"><strong>{{certification_name}}</strong></span>
-                    <span class="item-date">{{issue_date}}</span>
-                </div>
-                <div class="item-sub">Issuer: {{issuing_organization}} <!-- {{#if credential_id}} -->| ID: {{credential_id}}<!-- {{/if}} --></div>
-                <p class="item-details">{{description}}</p>
-            </div>
+            <div class="cert-item"><i class="fa-solid fa-award"></i> <strong>{{certification_name}}</strong> — {{issuing_organization}} ({{issue_date}})</div>
             <!-- {{/certifications}} -->
         </div>
     </section>
